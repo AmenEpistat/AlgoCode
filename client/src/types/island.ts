@@ -1,0 +1,1 @@
+export type IslandType = 'plain' | 'sort' | 'recursive';
