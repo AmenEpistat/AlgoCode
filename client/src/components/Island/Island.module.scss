@@ -1,0 +1,59 @@
+.island {
+  position: relative;
+  top: 0;
+
+  width: 350px;
+  height: 400px;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: 40%;
+
+  transition: all 0.4s linear;
+  cursor: pointer;
+
+  &:hover {
+    top: 20px;
+  }
+}
+
+.island::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -100px;
+  left: 10%;
+  right: 0;
+
+  width: 100%;
+  height: 50%;
+
+  background: url('../../assets/images/shadow.png') no-repeat center center;
+  background-size: 100% 50%;
+}
+
+.plain {
+  background-image: url('../../assets/images/plain_1.png');
+
+  &.completed {
+    background-image: url('../../assets/images/plain.png');
+  }
+}
+
+.sort {
+  background-image: url('../../assets/images/sort_1.png');
+
+  &.completed {
+    background-image: url('../../assets/images/sort.png');
+  }
+}
+
+.recursive {
+  background-image: url('../../assets/images/recursive.png');
+  background-position-y: -30px;
+
+  &.completed {
+    background-image: url('../../assets/images/recursive_1.png');
+  }
+}
+
