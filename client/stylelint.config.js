@@ -5,5 +5,6 @@ export default {
         'scss/at-import-no-partial-leading-underscore': null,
         'scss/at-import-partial-extension': null,
         'selector-class-pattern': null,
+        'declaration-empty-line-before': null,
     },
 };
