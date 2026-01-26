@@ -1,0 +1,28 @@
+.worldMapViewport {
+  width: 100vw;
+  height: 100vh;
+
+  overflow: auto;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.worldMap {
+  position: relative;
+
+  min-height: 1100px;
+  width: 1500px;
+  overflow: hidden;
+
+  background: url("../../assets/images/background.png") repeat center center scroll;
+}
+
+.worldMap__island {
+  position: absolute;
+}
+
+.worldMap__fogLeft {
+  position: absolute;
+  z-index: 1400;
+  overflow: hidden;
+}
