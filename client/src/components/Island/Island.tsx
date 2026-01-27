@@ -1,11 +1,10 @@
-import type { IslandType } from '../../types/island.ts';
+import type { IslandData, IslandType } from '../../types/island.ts';
 import styles from './Island.module.scss';
 import { classNames } from '../../utils/classNames.ts';
+import Plank from '../Plank/Plank.tsx';
 
 interface IslandProps {
-    isCompleted: boolean;
-    isLocked: boolean;
-    type: IslandType;
+    island: IslandData;
 }
 
 const islandTypeStyles: Record<IslandType, string> = {
@@ -14,17 +13,23 @@ const islandTypeStyles: Record<IslandType, string> = {
     recursive: styles.recursive,
 };
 
-const Island = ({ isCompleted, type, isLocked }: IslandProps) => {
+const Island = ({ island }: IslandProps) => {
     return (
         <div
             className={classNames(
                 styles.island,
-                islandTypeStyles[type],
-                isLocked && styles.locked,
-                isCompleted && styles.completed
+                islandTypeStyles[island.type],
+                island.isLocked && styles.locked,
+                island.isCompleted && styles.completed
             )}
         >
-            <p />
+            <div className={styles.island__plank}>
+                <Plank
+                    title={island.title}
+                    progress={island.progress}
+                    isLocked={island.isLocked}
+                />
+            </div>
         </div>
     );
 };
