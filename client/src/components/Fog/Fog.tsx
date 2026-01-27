@@ -31,6 +31,21 @@ const Fog = ({ className }: FogProps) => {
                     )}
                 />
             </div>
+
+            <div className={classNames(styles.fog, styles.fog__fast)}>
+                <div
+                    className={classNames(
+                        styles.fog__image,
+                        styles['fog__image--big']
+                    )}
+                />
+                <div
+                    className={classNames(
+                        styles.fog__image,
+                        styles['fog__image--small']
+                    )}
+                />
+            </div>
         </>
     );
 };

@@ -3,7 +3,6 @@
   inset: 0;
 
   pointer-events: none;
-  overflow: hidden;
 
   animation: fog-move 15s linear infinite;
 
@@ -30,9 +29,13 @@
   animation: fog-move-right 50s linear infinite;
 }
 
+.fog__fast {
+  animation: fog-move-fast 40s linear infinite;
+}
+
 @keyframes fog-move {
   from {
-    transform: translate(0, 0);
+    transform: translate(-10%, -5%);
   }
 
   to {
@@ -47,5 +50,15 @@
 
   to {
     transform: translate(100%, 20%);
+  }
+}
+
+@keyframes fog-move-fast {
+  from {
+    transform: translate(0%, -50%);
+  }
+
+  to {
+    transform: translate(30%, 20%);
   }
 }
