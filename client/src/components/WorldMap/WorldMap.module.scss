@@ -10,19 +10,55 @@
 .worldMap {
   position: relative;
 
-  min-height: 1100px;
   width: 1500px;
+  height: 1100px;
+
   overflow: hidden;
 
-  background: url("../../assets/images/background.png") repeat center center scroll;
+  background: url("../../assets/images/background.png") repeat center center;
+}
+
+.worldMap__paths {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.worldMap__path {
+  stroke: #d4af37;
+  stroke-width: 0.4;
+  stroke-dasharray: 2 1;
+  animation: draw 0.9s ease forwards;
+
+  fill: none;
+}
+
+.worldMap__pathLocked {
+  stroke: #433811FF;
 }
 
 .worldMap__island {
   position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
-.worldMap__fogLeft {
+.worldMap__fog {
   position: absolute;
   z-index: 1400;
-  overflow: hidden;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -10;
+  }
 }
