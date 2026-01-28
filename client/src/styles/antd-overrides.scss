@@ -1,4 +1,6 @@
-.ant-btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
+@use 'variables' as *;
+
+.css-var-root.ant-progress {
+  --ant-progress-default-color: #{$primary-bg};
+  --ant-color-success : #{$secondary-bg};
 }
