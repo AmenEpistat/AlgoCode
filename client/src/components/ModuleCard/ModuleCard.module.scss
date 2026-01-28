@@ -1,0 +1,96 @@
+.moduleCard {
+  position: relative;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    z-index: 1;
+
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    background-color: $accent-bg;
+
+    border-radius: 50%;
+    border: 3px solid $accent-bg;
+  }
+}
+
+.moduleCard__text {
+  position: relative;
+
+  padding: 15px 80px 15px 30px;
+
+  border-bottom: 1px solid $accent-bg;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 3px;
+    height: calc(100% + 1px);
+
+    background-color: $accent-bg;
+  }
+}
+
+.moduleCard--open {
+  &::before {
+    border: 3px solid $secondary-bg;
+  }
+}
+
+.moduleCard--open .moduleCard__text {
+  &::before {
+    background-image: linear-gradient($secondary-bg 50%, $accent-bg 50%);
+  }
+}
+
+
+.moduleCard--done {
+  &::before {
+    background-color: $secondary-bg;
+    border: 3px solid $secondary-bg;
+  }
+}
+
+.moduleCard--done .moduleCard__text {
+  &::before {
+    background-color: $secondary-bg;
+  }
+}
+
+.moduleCard--last {
+  &::after {
+    content: "";
+
+    position: absolute;
+    bottom: -10px;
+    left: -8px;
+
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    background-color: $accent-bg;
+
+    border-radius: 50%;
+    border: 3px solid $accent-bg;
+  }
+}
+
+.moduleCard__title {
+  color: $secondary-bg;
+}
+
+.moduleCard__description {
+  color: $text-main;
+}
