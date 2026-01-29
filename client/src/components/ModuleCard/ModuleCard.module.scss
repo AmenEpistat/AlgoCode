@@ -23,7 +23,7 @@
 .moduleCard__text {
   position: relative;
 
-  padding: 15px 80px 15px 30px;
+  padding: 35px 80px 35px 30px;
 
   border-bottom: 1px solid $accent-bg;
 
@@ -35,7 +35,7 @@
     left: 0;
 
     display: block;
-    width: 3px;
+    width: 5px;
     height: calc(100% + 1px);
 
     background-color: $accent-bg;
@@ -44,27 +44,21 @@
 
 .moduleCard--open {
   &::before {
-    border: 3px solid $secondary-bg;
-  }
-}
-
-.moduleCard--open .moduleCard__text {
-  &::before {
-    background-image: linear-gradient($secondary-bg 50%, $accent-bg 50%);
+    border: 3px solid $primary-bg;
   }
 }
 
 
 .moduleCard--done {
   &::before {
-    background-color: $secondary-bg;
-    border: 3px solid $secondary-bg;
+    background-color: $primary-bg;
+    border: 3px solid $primary-bg;
   }
 }
 
 .moduleCard--done .moduleCard__text {
   &::before {
-    background-color: $secondary-bg;
+    background-color: $primary-bg;
   }
 }
 
@@ -88,9 +82,16 @@
 }
 
 .moduleCard__title {
+  margin-bottom: 24px;
+
   color: $secondary-bg;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
 }
 
 .moduleCard__description {
   color: $text-main;
+  font-size: 16px;
+  line-height: 22px;
 }
