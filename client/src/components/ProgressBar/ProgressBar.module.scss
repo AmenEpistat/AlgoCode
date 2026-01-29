@@ -1,0 +1,45 @@
+.progress-bar-wrapper {
+  position: relative;
+  display: block;
+  width: min-content;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 10px 0 0 10px;
+}
+
+.progress-bar__percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: $text-main;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.current {
+  background-color: $primary-bg;
+  stroke: $primary-bg;
+}
+
+.success {
+  background-color: #52c41a;
+  stroke: #52c41a;
+}
+
+.default {
+  background-color: $accent-bg;
+  stroke: $accent-bg;
+}
