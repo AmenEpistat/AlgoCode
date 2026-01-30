@@ -1,21 +1,31 @@
 :root {
-  --bg-color: #c1dbe8;     
+  --bg-color: #3aa9e1;
+  --bg-color-hover: #61c5f6;
   --accent-color: #eae8e4;
+  --accent-color-hover: #eae8e4;
   --text-main: #1a0905;      
   --text-secondary: #2c3e50;   
-  --sec-color: #7a3446;
+  --sec-color: #6c182d;
+  --sec-color-hover: #490717;
+  --content-block-padding: 60px;
 }
 
 [data-theme='dark'] {
   --bg-color: #0f0f0f;
+  --bg-color-hover: #0f0f0f;
   --text-main: #fff;
   --text-secondary: #bdc3c7;
   --accent-color: #34495e;
-  --sec-color: #177ddc;    
+  --accent-color-hover: #34495e;
+  --sec-color: #177ddc;
+  --sec-color-hover: #177ddc;
 }
 
 $primary-bg: var(--bg-color);
+$primary-bg-hover: var(--bg-color-hover);
 $secondary-bg: var(--sec-color);
+$secondary-bg-hover: var(--sec-color-hover);
 $accent-bg: var(--accent-color);
+$accent-bg-hover: var(--accent-color-hover);
 $text-main: var(--text-main);
 $secondary-text: var(--text-secondary);
