@@ -40,11 +40,30 @@
 
     background-color: $accent-bg;
   }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: -25px;
+    display: block;
+    width: 25px;
+    height: 5px;
+    background-color: $accent-bg;
+  }
 }
 
 .moduleCard--open {
   &::before {
     border: 3px solid $primary-bg;
+  }
+
+  .moduleCard__text::before {
+    background-image: linear-gradient($primary-bg 30%, $accent-bg 30%);
+  }
+
+  .moduleCard__text::after {
+    background-color: $primary-bg;
   }
 }
 
@@ -53,6 +72,17 @@
   &::before {
     background-color: $primary-bg;
     border: 3px solid $primary-bg;
+  }
+
+  .moduleCard__text::after {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: -25px;
+    display: block;
+    width: 25px;
+    height: 5px;
+    background-color: $primary-bg;
   }
 }
 
@@ -82,16 +112,33 @@
 }
 
 .moduleCard__title {
+  display: flex;
+  width: min-content;
   margin-bottom: 24px;
 
   color: $secondary-bg;
   font-weight: 700;
   font-size: 24px;
   line-height: 24px;
+
+  &:hover {
+    color: $primary-bg;
+  }
 }
 
 .moduleCard__description {
   color: $text-main;
   font-size: 16px;
   line-height: 22px;
+}
+
+.moduleCard__button {
+  margin-top: 16px;
+}
+
+.moduleCard__progress {
+  transform: rotate(180deg);
+  position: absolute;
+  top: 24px;
+  left: -70px;
 }

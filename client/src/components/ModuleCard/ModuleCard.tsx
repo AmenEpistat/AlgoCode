@@ -1,6 +1,8 @@
 import styles from './ModuleCard.module.scss';
 import type { Module } from '@/types/module.ts';
 import { classNames } from '@/utils/classNames.ts';
+import { Button } from 'antd';
+import { ProgressBar } from '@/components/ProgressBar/ProgressBar.tsx';
 
 interface ModuleCardProps {
     module: Module;
@@ -19,11 +21,31 @@ export const ModuleCard = ({ module, isLast }: ModuleCardProps) => {
                 isLast && styles['moduleCard--last']
             )}
         >
+            <ProgressBar
+                className={styles.moduleCard__progress}
+                percent={module.progress}
+                type={'circle'}
+                size={50}
+            />
             <div className={styles.moduleCard__text}>
-                <h2 className={styles.moduleCard__title}>{module.title}</h2>
+                <a href={module.id} className={styles.moduleCard__title}>
+                    {module.title}
+                </a>
                 <div className={styles.moduleCard__description}>
                     {module.description}
                 </div>
+
+                <Button
+                    size={'middle'}
+                    className={classNames(
+                        styles.moduleCard__button,
+                        'ant-btn-secondary'
+                    )}
+                >
+                    {module.progress !== null
+                        ? 'Пройти еще раз'
+                        : 'Начать задания'}
+                </Button>
             </div>
         </div>
     );
