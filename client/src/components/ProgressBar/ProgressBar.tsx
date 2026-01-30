@@ -1,7 +1,7 @@
 import styles from './ProgressBar.module.scss';
 
 interface ProgressBarProps {
-    percent: number;
+    percent: number | null;
     type?: 'circle' | 'line';
     size?: number;
     height?: number;
@@ -9,10 +9,9 @@ interface ProgressBarProps {
     className?: string;
 }
 
-const getProgressColor = (percent: number) => {
-    if (percent === 0) return 'default';
-    if (percent < 100) return 'current';
-    return 'success';
+const getProgressColor = (percent: number | null) => {
+    if (percent !== 0) return 'current';
+    return 'default';
 };
 
 export const ProgressBar = ({
@@ -28,7 +27,7 @@ export const ProgressBar = ({
     if (type === 'circle') {
         const radius = 50 - strokeWidth;
         const circumference = 2 * Math.PI * radius;
-        const offset = circumference * (1 - percent / 100);
+        const offset = circumference * (1 - (percent ?? 0) / 100);
 
         return (
             <div className={styles['progress-bar-wrapper']}>
