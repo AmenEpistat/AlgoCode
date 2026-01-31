@@ -1,0 +1,38 @@
+@mixin stick($bg-color) {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: block;
+  width: 5px;
+  height: calc(100% + 1px);
+
+  background-color: $bg-color;
+}
+
+@mixin circle($bg-color, $border-color) {
+  content: "";
+
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  z-index: 1;
+
+  display: block;
+  width: 20px;
+  height: 20px;
+
+  background-color: $bg-color;
+
+  border-radius: 50%;
+  border: 3px solid $border-color;
+}
+
+@mixin page-title($color) {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 44px;
+  color: $color;
+}
