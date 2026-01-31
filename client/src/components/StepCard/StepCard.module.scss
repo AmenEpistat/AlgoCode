@@ -1,0 +1,28 @@
+.step-card {
+  position: relative;
+
+  &::before {
+    @include circle($accent-bg, $accent-bg);
+  }
+}
+
+.step-card__title, .step-card__description {
+  padding: 15px 20px 0;
+
+  &::before {
+    @include stick($accent-bg);
+  }
+}
+
+.step-card__title {
+  margin-bottom: 5px;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: $secondary-bg;
+}
+
+.step-card__description {
+  line-height: 20px;
+}
