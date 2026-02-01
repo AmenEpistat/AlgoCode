@@ -1,6 +1,6 @@
 import styles from './TaskCard.module.scss';
-import type { Task } from '@/types/module.ts';
 import { classNames } from '@/utils/classNames.ts';
+import type { Task } from '@/types/task.ts';
 
 interface TaskCardProps {
     task: Task;
@@ -19,7 +19,7 @@ const TaskCard = ({ task }: TaskCardProps) => {
                 {task.description}
             </p>
             <a
-                href={task.id}
+                href={`/task${task.id}`}
                 className={classNames(
                     styles['task-card__link'],
                     styles[`task-card__link--${task.type}`]

@@ -1,6 +1,6 @@
-import type { Step } from '@/types/module.ts';
 import StepCard from '@/components/StepCard/StepCard.tsx';
 import '@/styles/pages/module-page.scss';
+import type { Step } from '@/types/step.ts';
 
 const module = {
     id: '1',

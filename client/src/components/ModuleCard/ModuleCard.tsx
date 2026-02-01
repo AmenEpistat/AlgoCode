@@ -28,7 +28,10 @@ export const ModuleCard = ({ module, isLast }: ModuleCardProps) => {
                 size={50}
             />
             <div className={styles.moduleCard__text}>
-                <a href={module.id} className={styles.moduleCard__title}>
+                <a
+                    href={`/module/${module.id}`}
+                    className={styles.moduleCard__title}
+                >
                     {module.title}
                 </a>
                 <div className={styles.moduleCard__description}>
