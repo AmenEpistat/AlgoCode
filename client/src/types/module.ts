@@ -1,4 +1,5 @@
 import type { Text } from '@/types/text.ts';
+import type { Step } from "@/types/step.ts";
 
 export interface Module extends Text {
     difficulty: number;
@@ -9,15 +10,3 @@ export interface Module extends Text {
 export interface ModuleDetails extends Module {
     steps: Step[];
 }
-
-export interface Step extends Text {
-    progress: number;
-    tasks: Task[];
-}
-
-export interface Task extends Text {
-    type: TaskType;
-    progress: number;
-}
-
-export type TaskType = 'theory' | 'code' | 'test' | 'exam';
