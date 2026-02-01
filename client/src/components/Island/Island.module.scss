@@ -39,27 +39,27 @@
 }
 
 .plain {
-  background-image: url('../../assets/images/plain_1.png');
+  background-image: url('../../assets/images/islands/plain_1.png');
 
   &.completed {
-    background-image: url('../../assets/images/plain.png');
+    background-image: url('../../assets/images/islands/plain.png');
   }
 }
 
 .sort {
-  background-image: url('../../assets/images/sort_1.png');
+  background-image: url('../../assets/images/islands/sort_1.png');
 
   &.completed {
-    background-image: url('../../assets/images/sort.png');
+    background-image: url('../../assets/images/islands/sort.png');
   }
 }
 
 .recursive {
-  background-image: url('../../assets/images/recursive.png');
+  background-image: url('../../assets/images/islands/recursive.png');
   background-position-y: -30px;
 
   &.completed {
-    background-image: url('../../assets/images/recursive_1.png');
+    background-image: url('../../assets/images/islands/recursive_1.png');
   }
 }
 

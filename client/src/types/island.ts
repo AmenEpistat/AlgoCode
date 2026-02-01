@@ -1,8 +1,8 @@
+import type { Text } from '@/types/text.ts';
+
 export type IslandType = 'plain' | 'sort' | 'recursive';
 
-export interface IslandData {
-    id: string;
-    title: string;
+export interface IslandData extends Text {
     type: IslandType;
     x: number;
     y: number;

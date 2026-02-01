@@ -1,4 +1,43 @@
+@use 'variables' as *;
+
 .ant-btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
+  background-color: $primary-bg;
+  border-radius: 0;
+  border: none;
+  color: $accent-bg;
+
+  &:hover, &:focus {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: $primary-bg-hover !important;
+    color: $accent-bg !important;
+  }
+}
+
+.ant-btn-secondary {
+  background-color: $secondary-bg;
+  border-radius: 0;
+  border: none;
+  color: $accent-bg;
+
+  &:hover, &:focus {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: $secondary-bg-hover !important;
+    color: $accent-bg !important;
+  }
+}
+
+.ant-btn-accent {
+  background-color: $accent-bg;
+  border-radius: 0;
+  border: none;
+  color: $secondary-bg;
+
+  &:hover, &:focus {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: $accent-bg-hover!important;
+    color: $secondary-bg !important;
+  }
 }

@@ -1,0 +1,103 @@
+.islands {
+  position: relative;
+}
+
+.islands__head {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  column-gap: 80px;
+  height: 360px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 420px;
+    width: 100%;
+    background-color: $secondary-bg;
+    z-index: 0;
+  }
+}
+
+.island__head-button {
+  margin-right: auto;
+}
+
+.islands__content,
+.islands__description-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.islands__description-wrapper {
+  margin-top: 32px;
+}
+
+.islands__title {
+  @include page-title($accent-bg)
+}
+
+.islands__description {
+  font-size: 18px;
+  line-height: 24px;
+  color: $accent-bg;
+}
+
+
+.islands__content {
+  position: relative;
+
+  height: 250px;
+  width: 210px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--content-block-padding));
+    right: -50px;
+    height: 420px;
+    width: 5px;
+    background-color: $primary-bg;
+  }
+}
+
+.islands__progress {
+  position: absolute;
+  top: 0;
+}
+
+.islands__image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.islands__modules-wrapper {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 45px;
+}
+
+.islands__modules {
+  grid-column: 2/-1;
+}
+
+.islands__count-modules {
+  z-index: 1;
+
+  color: $accent-bg;
+  display: flex;
+  flex-direction: column;
+
+  margin-left: auto;
+
+  text-align: center;
+}
+
+.islands__count {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 44px;
+}

@@ -1,0 +1,75 @@
+.task-card {
+  position: relative;
+
+  padding: 15px 20px;
+
+  border-bottom: 1px solid $accent-bg;
+
+  &::before {
+   @include stick($accent-bg);
+  }
+}
+
+.task-card__title {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 700;
+}
+
+.task-card__description {
+  margin-bottom: 16px;
+
+  line-height: 24px;
+}
+
+.task-card__link {
+  display: flex;
+  gap: 8px;
+
+  width: min-content;
+
+  line-height: 22px;
+  color: $secondary-bg;
+
+  &::before {
+    content: "";
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    background-color: $secondary-text;
+  }
+
+  &:hover {
+  color: $secondary-bg-hover;
+  }
+}
+
+.task-card__link--code {
+  &::before {
+    mask-image: url("@/assets/images/icons/code_icon.svg");
+  }
+}
+
+.task-card__link--theory {
+  &::before {
+    mask-image: url("@/assets/images/icons/page_icon.svg");
+  }
+}
+
+.task-card__link--test {
+  &::before {
+    mask-image: url("@/assets/images/icons/task_icon.svg");
+  }
+}
+
+.task-card--done {
+  &::before {
+    background-color: $primary-bg;
+  }
+
+  .task-card__link::before {
+    background-color: $primary-bg;
+  }
+}
+

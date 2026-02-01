@@ -1,0 +1,144 @@
+.moduleCard {
+  position: relative;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    z-index: 1;
+
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    background-color: $accent-bg;
+
+    border-radius: 50%;
+    border: 3px solid $accent-bg;
+  }
+}
+
+.moduleCard__text {
+  position: relative;
+
+  padding: 35px 80px 35px 30px;
+
+  border-bottom: 1px solid $accent-bg;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 5px;
+    height: calc(100% + 1px);
+
+    background-color: $accent-bg;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: -25px;
+    display: block;
+    width: 25px;
+    height: 5px;
+    background-color: $accent-bg;
+  }
+}
+
+.moduleCard--open {
+  &::before {
+    border: 3px solid $primary-bg;
+  }
+
+  .moduleCard__text::before {
+    background-image: linear-gradient($primary-bg 30%, $accent-bg 30%);
+  }
+
+  .moduleCard__text::after {
+    background-color: $primary-bg;
+  }
+}
+
+
+.moduleCard--done {
+  &::before {
+    background-color: $primary-bg;
+    border: 3px solid $primary-bg;
+  }
+
+  .moduleCard__text::after {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: -25px;
+    display: block;
+    width: 25px;
+    height: 5px;
+    background-color: $primary-bg;
+  }
+}
+
+.moduleCard--done .moduleCard__text {
+  &::before {
+    background-color: $primary-bg;
+  }
+}
+
+.moduleCard--last {
+  &::after {
+    content: "";
+
+    position: absolute;
+    bottom: -10px;
+    left: -8px;
+
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    background-color: $accent-bg;
+
+    border-radius: 50%;
+    border: 3px solid $accent-bg;
+  }
+}
+
+.moduleCard__title {
+  display: flex;
+  width: min-content;
+  margin-bottom: 24px;
+
+  color: $secondary-bg;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+
+  &:hover {
+    color: $primary-bg;
+  }
+}
+
+.moduleCard__description {
+  color: $text-main;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.moduleCard__button {
+  margin-top: 16px;
+}
+
+.moduleCard__progress {
+  transform: rotate(180deg);
+  position: absolute;
+  top: 24px;
+  left: -70px;
+}
