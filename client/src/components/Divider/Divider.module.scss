@@ -1,0 +1,29 @@
+.divider-vertical{
+  height: 2px;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  z-index: 1;
+  background: transparent;
+  cursor: row-resize;
+  width: 100%;
+
+  &:hover, &:focus, &:active {
+    background: $primary-bg;
+  }
+}
+
+.divider-horizontal {
+  height: 100%;
+  width: 2px;
+  position: absolute;
+  left: -4px;
+  top: 0;
+  z-index: 1;
+  cursor: col-resize;
+
+  &:hover, &:focus, &:active {
+    background: $primary-bg
+  }
+}
+

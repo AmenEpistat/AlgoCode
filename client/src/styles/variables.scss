@@ -1,4 +1,5 @@
 :root {
+  --common-bg-color: #fff;
   --bg-color: #3aa9e1;
   --bg-color-hover: #61c5f6;
   --accent-color: #eae8e4;
@@ -11,6 +12,7 @@
 }
 
 [data-theme='dark'] {
+  --common-bg-color: #000;
   --bg-color: #0f0f0f;
   --bg-color-hover: #0f0f0f;
   --text-main: #fff;
@@ -29,3 +31,4 @@ $accent-bg: var(--accent-color);
 $accent-bg-hover: var(--accent-color-hover);
 $text-main: var(--text-main);
 $secondary-text: var(--text-secondary);
+$common-bg: var(--common-bg-color);
