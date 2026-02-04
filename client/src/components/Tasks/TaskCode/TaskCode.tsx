@@ -1,25 +1,28 @@
-import type { TaskCodeType } from '@/types/task.ts';
-import { useState } from 'react';
+import styles from './TaskCode.module.scss';
 import Editor from '@monaco-editor/react';
+import { editorOptions } from '@/config/editorOptions.ts';
 
 interface TaskCodeProps {
-    task: TaskCodeType;
-    onSubmit: (code: string) => void;
+    value: string;
+    onChange: (code: string) => void;
+    language: string;
 }
 
-const TaskCode = ({ task, onSubmit }: TaskCodeProps) => {
-    const [code, setCode] = useState(task.starterCode);
-
+const TaskCode = ({ value, onChange, language }: TaskCodeProps) => {
     return (
-        <section>
-            <Editor
-                height='85vh'
-                width={'100%'}
-                language={task.language || 'javascript'}
-                defaultValue={task.starterCode}
-                onChange={onSubmit}
-            />
-        </section>
+        <div className={styles['task-code']}>
+            <div className={styles['task-code__editor']}>
+                <Editor
+                    height='100%'
+                    width='100%'
+                    language={language || 'javascript'}
+                    value={value}
+                    onChange={(value) => onChange(value ?? '')}
+                    options={editorOptions}
+                    theme='light'
+                />
+            </div>
+        </div>
     );
 };
 
