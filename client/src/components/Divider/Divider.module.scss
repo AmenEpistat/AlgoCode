@@ -1,28 +1,23 @@
-.resizer{
-  position: relative;
-
-  padding: 8px;
-  border: 1px solid $secondary-text;
-  border-radius: 8px;
-  scroll-behavior: smooth;
-}
-
-.resizer-height{
+.divider-vertical{
   height: 2px;
-  margin-top: 3px;
-
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  z-index: 1;
   background: transparent;
+  cursor: row-resize;
+  width: 100%;
 
   &:hover, &:focus, &:active {
     background: $primary-bg;
   }
 }
 
-.resizer-width {
+.divider-horizontal {
   height: 100%;
   width: 2px;
   position: absolute;
-  right: -30px;
+  left: -4px;
   top: 0;
   z-index: 1;
   cursor: col-resize;
