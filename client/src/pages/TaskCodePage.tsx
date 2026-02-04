@@ -1,66 +1,44 @@
-import { useState } from 'react';
-import type { TaskCodeType, CodeTest, TestResult } from '@/types/task';
+import { useEffect, useState } from 'react';
+import type { TaskCodeType } from '@/types/task';
 import TaskCode from '@/components/Tasks/TaskCode/TaskCode.tsx';
+import '@/styles/pages/task-code-page.scss';
+import { Select } from 'antd';
+import type { CodeLanguage } from '@/types/code.ts';
 
 interface Props {
     task: TaskCodeType;
 }
 
 const TaskCodePage = ({ task }: Props) => {
-    const [code, setCode] = useState(task.starterCode);
-    const [result, setResult] = useState<TestResult | null>(null);
+    const [language, setLanguage] = useState<CodeLanguage>('javascript');
+    const [code, setCode] = useState(task.starterCode[language] || '');
 
-    const runTests = () => {
-        let passed = 0;
-        let failedTest: CodeTest | null = null;
-
-        for (const test of task.tests) {
-            try {
-                if (test.run(code)) {
-                    passed++;
-                } else {
-                    failedTest = test;
-                    break;
-                }
-            } catch {
-                failedTest = test;
-                break;
-            }
-        }
-
-        setResult({
-            passed,
-            total: task.tests.length,
-            lastFailed: failedTest,
-            score: passed * task.point,
-        });
-    };
+    useEffect(() => {
+        setCode(task.starterCode[language] || '');
+    }, [language]);
 
     return (
-        <div className='task-layout'>
-            <section className='task-description'>
+        <div className='task-code-page content-wrapper'>
+            <section className='task-code__description'>
                 <h2>{task.title}</h2>
                 <p>{task.description}</p>
             </section>
 
-            <section className='task-editor'>
-                <TaskCode task={task} onSubmit={runTests} />
-
-                {result && (
-                    <div className='task-result'>
-                        <p>
-                            Пройдено тестов: {result.passed} / {result.total}
-                        </p>
-                        <p>Баллы: {result.score}</p>
-
-                        {result.lastFailed && (
-                            <p>
-                                ❌ Последний тест:{' '}
-                                {result.lastFailed.description}
-                            </p>
-                        )}
-                    </div>
-                )}
+            <section className='task-code__editor'>
+                <Select
+                    value={language}
+                    style={{ width: 120 }}
+                    onChange={setLanguage}
+                    options={Object.keys(task.starterCode).map((lang) => ({
+                        value: lang,
+                        label: lang,
+                    }))}
+                />
+                <TaskCode
+                    value={code}
+                    onChange={(code) => setCode(code)}
+                    language={language}
+                />
             </section>
         </div>
     );
