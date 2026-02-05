@@ -4,6 +4,8 @@ import TaskCode from '@/components/Tasks/TaskCode/TaskCode.tsx';
 import '@/styles/pages/task-code-page.scss';
 import { Divider } from '@/components/Divider/Divider.tsx';
 import { useResize } from '@/hooks/useResize.ts';
+import Panel from '@/components/Panel/Panel.tsx';
+import { CodeOutlined } from '@ant-design/icons';
 
 interface Props {
     task: TaskCodeType;
@@ -33,13 +35,15 @@ const TaskCodePage = ({ task }: Props) => {
 
     return (
         <section className='task-code-page content-wrapper'>
-            <div
+            <Panel
                 className='task-code-page__description'
                 style={{ width: `calc(100% - ${width}px)` }}
+                title='Description'
+                icon={<CodeOutlined />}
             >
                 <h2>{task.title}</h2>
                 <p>{task.description}</p>
-            </div>
+            </Panel>
 
             <section
                 className='task-code-page__editor-wrapper'
@@ -50,9 +54,15 @@ const TaskCodePage = ({ task }: Props) => {
                     direction='horizontal'
                     onMouseDown={onMouseWidth}
                 />
-                <div
+                <Panel
                     className='task-code-page__editor'
                     style={{ height: height }}
+                    title={'Code'}
+                    icon={
+                        <CodeOutlined
+                            className={'task-code-page__editor-icon'}
+                        />
+                    }
                 >
                     <TaskCode
                         starterCode={task.starterCode}
@@ -64,7 +74,7 @@ const TaskCodePage = ({ task }: Props) => {
                         direction='vertical'
                         onMouseDown={onMouseHeight}
                     />
-                </div>
+                </Panel>
             </section>
         </section>
     );

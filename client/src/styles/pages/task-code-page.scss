@@ -2,17 +2,19 @@
   position: relative;
 
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
 }
 
 .task-code-page__editor {
   position: relative;
 }
 
-.task-code-page__editor-wrapper {
-  position: absolute;
-  right: 8px;
+.task-code-page__editor-icon {
+  color: $accent-bg;
+  font-size: 16px;
+}
 
+.task-code-page__editor-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -21,6 +23,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  color: #1a0905;
 }
 
 .task-code-page__horizontal {

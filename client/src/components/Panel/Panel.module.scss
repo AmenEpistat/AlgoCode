@@ -1,0 +1,21 @@
+.panel {
+  border-radius: 8px;
+  border: 1px solid $accent-bg;
+  background-color: $common-sec-bg;
+}
+
+.panel__title {
+  display: flex;
+  gap: 8px;
+
+  width: 100%;
+  padding: 8px;
+
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  color: $accent-bg;
+  background: $secondary-bg;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
