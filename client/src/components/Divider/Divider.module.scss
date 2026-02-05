@@ -1,8 +1,6 @@
 .divider-vertical{
   height: 2px;
   position: absolute;
-  bottom: -4px;
-  left: 0;
   z-index: 1;
   background: transparent;
   cursor: row-resize;
@@ -17,8 +15,6 @@
   height: 100%;
   width: 2px;
   position: absolute;
-  left: -4px;
-  top: 0;
   z-index: 1;
   cursor: col-resize;
 
