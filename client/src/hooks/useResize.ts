@@ -1,10 +1,11 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 interface ResizeOptions {
     direction: 'horizontal' | 'vertical';
     min: number;
     onResize: (value: number) => void;
     startValue: number;
+    invert?: boolean;
 }
 
 export const useResize = ({
@@ -12,6 +13,7 @@ export const useResize = ({
     min,
     onResize,
     startValue,
+    invert = false,
 }: ResizeOptions) => {
     return useCallback(
         (e: React.MouseEvent) => {
@@ -23,7 +25,10 @@ export const useResize = ({
                 const currentPos =
                     direction === 'horizontal' ? ev.clientX : ev.clientY;
 
-                const delta = currentPos - startPos;
+                let delta = currentPos - startPos;
+                if (invert) {
+                    delta = -delta;
+                }
                 onResize(Math.max(min, startValue + delta));
             };
 
