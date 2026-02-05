@@ -1,46 +1,72 @@
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import type { TaskCodeType } from '@/types/task';
 import TaskCode from '@/components/Tasks/TaskCode/TaskCode.tsx';
 import '@/styles/pages/task-code-page.scss';
-import { Select } from 'antd';
-import type { CodeLanguage } from '@/types/code.ts';
+import { Divider } from '@/components/Divider/Divider.tsx';
+import { useResize } from '@/hooks/useResize.ts';
 
 interface Props {
     task: TaskCodeType;
 }
 
 const TaskCodePage = ({ task }: Props) => {
-    const [language, setLanguage] = useState<CodeLanguage>('javascript');
-    const [code, setCode] = useState(task.starterCode[language] || '');
+    const [code, setCode] = useState('');
+    const editorRef = useRef<any>(null);
 
-    useEffect(() => {
-        setCode(task.starterCode[language] || '');
-    }, [language]);
+    const [height, setHeight] = useState(300);
+    const [width, setWidth] = useState(300);
+
+    const onMouseHeight = useResize({
+        direction: 'vertical',
+        min: 50,
+        onResize: setHeight,
+        startValue: height,
+    });
+
+    const onMouseWidth = useResize({
+        direction: 'horizontal',
+        min: 300,
+        onResize: setWidth,
+        startValue: width,
+        invert: true,
+    });
 
     return (
-        <div className='task-code-page content-wrapper'>
-            <section className='task-code__description'>
+        <section className='task-code-page content-wrapper'>
+            <div
+                className='task-code-page__description'
+                style={{ width: `calc(100% - ${width}px)` }}
+            >
                 <h2>{task.title}</h2>
                 <p>{task.description}</p>
-            </section>
+            </div>
 
-            <section className='task-code__editor'>
-                <Select
-                    value={language}
-                    style={{ width: 120 }}
-                    onChange={setLanguage}
-                    options={Object.keys(task.starterCode).map((lang) => ({
-                        value: lang,
-                        label: lang,
-                    }))}
+            <section
+                className='task-code-page__editor-wrapper'
+                style={{ width: width }}
+            >
+                <Divider
+                    className={'task-code-page__horizontal'}
+                    direction='horizontal'
+                    onMouseDown={onMouseWidth}
                 />
-                <TaskCode
-                    value={code}
-                    onChange={(code) => setCode(code)}
-                    language={language}
-                />
+                <div
+                    className='task-code-page__editor'
+                    style={{ height: height }}
+                >
+                    <TaskCode
+                        starterCode={task.starterCode}
+                        onChange={(code) => console.log(height)}
+                        editorRef={editorRef}
+                    />
+                    <Divider
+                        className={'task-code-page__vertical'}
+                        direction='vertical'
+                        onMouseDown={onMouseHeight}
+                    />
+                </div>
             </section>
-        </div>
+        </section>
     );
 };
 

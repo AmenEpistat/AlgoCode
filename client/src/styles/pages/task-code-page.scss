@@ -1,9 +1,30 @@
 .task-code-page {
+  position: relative;
+
   display: flex;
   justify-content: space-between;
 }
 
-.task-code__editor {
+.task-code-page__editor {
+  position: relative;
+}
+
+.task-code-page__editor-wrapper {
   position: absolute;
-  right: 16px;
+  right: 8px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.task-code-page__vertical {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.task-code-page__horizontal {
+  top: 0;
+  left: 0;
+  height: 100%;
 }
