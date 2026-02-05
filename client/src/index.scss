@@ -6,7 +6,9 @@ body {
 
 #root {
     display: flex;
+    min-height: 100%;
     padding: 0;
+    background: $common-bg;
 }
 
 *,
