@@ -15,7 +15,7 @@ const TaskCodePage = ({ task }: Props) => {
     const [code, setCode] = useState('');
     const editorRef = useRef<any>(null);
 
-    const [height, setHeight] = useState(300);
+    const [height, setHeight] = useState(100);
     const [width, setWidth] = useState(300);
 
     const onMouseHeight = useResize({
@@ -37,12 +37,13 @@ const TaskCodePage = ({ task }: Props) => {
         <section className='task-code-page content-wrapper'>
             <Panel
                 className='task-code-page__description'
-                style={{ width: `calc(100% - ${width}px)` }}
                 title='Description'
                 icon={<CodeOutlined />}
             >
-                <h2>{task.title}</h2>
-                <p>{task.description}</p>
+                <div>
+                    <h2>{task.title}</h2>
+                    <p>{task.description}</p>
+                </div>
             </Panel>
 
             <section

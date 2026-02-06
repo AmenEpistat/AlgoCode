@@ -1,12 +1,21 @@
 .task-code-page {
-  position: relative;
+  height: 100%;
+  align-items: flex-start;
 
   display: flex;
   gap: 8px;
 }
 
+.task-code-page__description {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .task-code-page__editor {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .task-code-page__editor-icon {
@@ -15,8 +24,12 @@
 }
 
 .task-code-page__editor-wrapper {
+  position: relative;
+
   display: flex;
   flex-direction: column;
+
+  align-self: flex-start;
 }
 
 .task-code-page__vertical {
@@ -30,4 +43,5 @@
   top: 0;
   left: 0;
   height: 100%;
+  color: #1a0905;
 }
