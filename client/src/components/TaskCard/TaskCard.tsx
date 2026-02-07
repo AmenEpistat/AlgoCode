@@ -19,7 +19,7 @@ const TaskCard = ({ task }: TaskCardProps) => {
                 {task.description}
             </p>
             <a
-                href={`/task${task.id}`}
+                href={`/task/${task.id}`}
                 className={classNames(
                     styles['task-card__link'],
                     styles[`task-card__link--${task.type}`]
