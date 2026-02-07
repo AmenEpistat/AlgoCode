@@ -5,14 +5,12 @@ import React from 'react';
 
 interface CodeEditorProps {
     value: string;
-    onChange: (code: string) => void;
     language: string;
     editorRef?: React.RefObject<any>;
 }
 
 const CodeEditor = ({
     value,
-    onChange,
     language,
     editorRef,
 }: CodeEditorProps) => {
@@ -26,8 +24,7 @@ const CodeEditor = ({
                 height='100%'
                 width='100%'
                 language={language || 'javascript'}
-                value={value}
-                onChange={(value) => onChange(value ?? '')}
+                defaultValue={value}
                 options={editorOptions}
                 theme='light'
                 onMount={handleEditorMount}

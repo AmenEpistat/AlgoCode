@@ -1,28 +1,33 @@
 import styles from './TaskCode.module.scss';
 import { Button, Select } from 'antd';
-import { UndoOutlined, AlignLeftOutlined } from '@ant-design/icons';
+import {
+    UndoOutlined,
+    AlignLeftOutlined,
+    CaretRightOutlined,
+} from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import CodeEditor from '@/components/CodeEditor/CodeEditor.tsx';
 import type { CodeLanguage } from '@/types/code.ts';
 
 interface TaskCodeProps {
     starterCode: Record<CodeLanguage, string>;
-    onChange: (code: string) => void;
+    runCode: (code: string) => void;
     editorRef: React.RefObject<any>;
 }
 
-const TaskCode = ({ starterCode, onChange, editorRef }: TaskCodeProps) => {
+const TaskCode = ({ starterCode, editorRef, runCode }: TaskCodeProps) => {
     const [language, setLanguage] = useState<CodeLanguage>('javascript');
-    const [code, setCode] = useState(starterCode[language] || '');
+
+    const handleRun = () => {
+        const code = editorRef.current?.getValue();
+        if (!code) return;
+
+        runCode(code);
+    };
 
     useEffect(() => {
-        setCode(starterCode[language] || '');
+        editorRef.current?.setValue(starterCode[language] ?? '');
     }, [language]);
-
-    const handleCodeChange = (value: string) => {
-        setCode(value);
-        onChange(value);
-    };
 
     return (
         <div className={styles['task-code']}>
@@ -30,7 +35,7 @@ const TaskCode = ({ starterCode, onChange, editorRef }: TaskCodeProps) => {
                 <Select
                     className={styles['task-code__select']}
                     value={language}
-                    style={{ width: 100 }}
+                    style={{ width: 120 }}
                     onChange={setLanguage}
                     options={Object.keys(starterCode).map((lang) => ({
                         value: lang,
@@ -51,17 +56,28 @@ const TaskCode = ({ starterCode, onChange, editorRef }: TaskCodeProps) => {
                         icon={<UndoOutlined />}
                         type='text'
                         style={{ rotate: '90deg' }}
-                        onClick={() => setCode(starterCode[language])}
+                        onClick={() =>
+                            editorRef.current?.setValue(
+                                starterCode[language] ?? ''
+                            )
+                        }
                     />
                 </div>
             </div>
 
             <CodeEditor
-                value={code}
+                value={starterCode[language]}
                 language={language}
-                onChange={handleCodeChange}
                 editorRef={editorRef}
             />
+            <Button
+                icon={<CaretRightOutlined style={{ fontSize: '30px' }} />}
+                type='text'
+                className={styles['task-code__button']}
+                onClick={handleRun}
+            >
+                Run
+            </Button>
         </div>
     );
 };
