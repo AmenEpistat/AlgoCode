@@ -1,14 +1,31 @@
 .task-code-page {
   height: 100%;
   align-items: flex-start;
-
   display: flex;
   gap: 8px;
+  padding: var(--content-block-padding) 16px;
+}
+
+.task-code-page__description-wrapper {
+  flex: 1 2 auto;
+  min-width: 0;
+}
+
+.task-code-page__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: $text-main;
 }
 
 .task-code-page__description {
-  flex: 1 1 auto;
-  min-width: 0;
+  font-size: 14px;
+  line-height: 21px;
+  color: $text-main;
+}
+
+.task-code-page__description-content {
+  padding: 16px;
 }
 
 .task-code-page__editor {
@@ -33,15 +50,13 @@
 }
 
 .task-code-page__vertical {
-  bottom: 0;
+  bottom: -8px;
   left: 0;
   width: 100%;
-  color: #1a0905;
 }
 
 .task-code-page__horizontal {
   top: 0;
-  left: 0;
+  left: -5px;
   height: 100%;
-  color: #1a0905;
 }

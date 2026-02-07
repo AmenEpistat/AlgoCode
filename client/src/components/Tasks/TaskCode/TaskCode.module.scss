@@ -10,6 +10,7 @@
   border: none;
   border-radius: 0;
   height: 32px;
+  padding-left: 16px;
 }
 
 .task-code {
@@ -22,3 +23,13 @@
   border-radius: 8px;
 }
 
+.task-code__button {
+  padding: 24px;
+  width: min-content;
+  margin-left: auto;
+  color: $secondary-bg;
+
+  &:hover {
+    color: $secondary-bg-hover !important;
+  }
+}
