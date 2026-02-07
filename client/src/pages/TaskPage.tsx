@@ -5,6 +5,7 @@ import '@/styles/pages/task-page.scss';
 export const taskSum: TaskCodeType = {
     type: 'code',
     id: 'sum',
+    difficulty: 'Medium',
     title: 'Сумма чисел',
     description: 'Напиши функцию sum(a, b), которая возвращает сумму',
     starterCode: {
