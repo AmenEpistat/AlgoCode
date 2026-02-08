@@ -1,13 +1,11 @@
 import styles from './TaskCode.module.scss';
-import { Button, Select } from 'antd';
-import {
-    UndoOutlined,
-    AlignLeftOutlined,
-    CaretRightOutlined,
-} from '@ant-design/icons';
-import React, { useEffect, useState } from 'react';
+import { Button } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
+import React from 'react';
 import CodeEditor from '@/components/CodeEditor/CodeEditor.tsx';
 import type { CodeLanguage } from '@/types/code.ts';
+import { useTaskCode } from '@/components/Tasks/TaskCode/useTaskCode.ts';
+import TaskCodeControls from '@/components/Tasks/TaskCode/TaskCodeControls.tsx';
 
 interface TaskCodeProps {
     starterCode: Record<CodeLanguage, string>;
@@ -16,55 +14,23 @@ interface TaskCodeProps {
 }
 
 const TaskCode = ({ starterCode, editorRef, runCode }: TaskCodeProps) => {
-    const [language, setLanguage] = useState<CodeLanguage>('javascript');
+    const { language, setLanguage, resetCode, formatCode, getCode } =
+        useTaskCode(starterCode, editorRef);
 
     const handleRun = () => {
-        const code = editorRef.current?.getValue();
-        if (!code) return;
-
-        runCode(code);
+        const code = getCode();
+        if (code) runCode(code);
     };
-
-    useEffect(() => {
-        editorRef.current?.setValue(starterCode[language] ?? '');
-    }, [language]);
 
     return (
         <div className={styles['task-code']}>
-            <div className={styles['task-code__wrapper']}>
-                <Select
-                    className={styles['task-code__select']}
-                    value={language}
-                    style={{ width: 120 }}
-                    onChange={setLanguage}
-                    options={Object.keys(starterCode).map((lang) => ({
-                        value: lang,
-                        label: lang,
-                    }))}
-                />
-                <div className={styles['task-code__controls']}>
-                    <Button
-                        icon={<AlignLeftOutlined />}
-                        type='text'
-                        onClick={() =>
-                            editorRef.current
-                                ?.getAction('editor.action.formatDocument')
-                                .run()
-                        }
-                    />
-                    <Button
-                        icon={<UndoOutlined />}
-                        type='text'
-                        style={{ rotate: '90deg' }}
-                        onClick={() =>
-                            editorRef.current?.setValue(
-                                starterCode[language] ?? ''
-                            )
-                        }
-                    />
-                </div>
-            </div>
-
+            <TaskCodeControls
+                language={language}
+                starterCode={starterCode}
+                onFormat={formatCode}
+                onReset={resetCode}
+                setLanguage={setLanguage}
+            />
             <CodeEditor
                 value={starterCode[language]}
                 language={language}
