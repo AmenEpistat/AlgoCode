@@ -1,0 +1,22 @@
+.task-description {
+  flex: 1 2 0;
+  min-width: 0;
+}
+
+.task-description__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: $text-main;
+}
+
+.task-description__text {
+  font-size: 14px;
+  line-height: 21px;
+  color: $text-main;
+}
+
+.task-description__content {
+  padding: 16px;
+  min-width: 0;
+}
