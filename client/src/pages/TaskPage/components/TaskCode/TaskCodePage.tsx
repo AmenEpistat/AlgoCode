@@ -1,54 +1,40 @@
-import { useRef, useState } from 'react';
-import type { TaskCodeType } from '@/types/task';
+import { useRef } from 'react';
+import type { TaskCodeType } from '@/types/task.ts';
 import TaskCode from '@/components/Tasks/TaskCode/TaskCode.tsx';
 import '@/styles/pages/task-code-page.scss';
 import { Divider } from '@/components/Divider/Divider.tsx';
-import { useResize } from '@/hooks/useResize.ts';
 import Panel from '@/components/Panel/Panel.tsx';
 import { CodeOutlined } from '@ant-design/icons';
+import { useTaskLayout } from '@/pages/TaskPage/components/TaskCode/useTaskLayout.ts';
+import TaskDescription from '@/components/Tasks/TaskDescription/TaskDescription.tsx';
 
 interface Props {
     task: TaskCodeType;
 }
 
 const TaskCodePage = ({ task }: Props) => {
-    const [code, setCode] = useState('');
     const editorRef = useRef<any>(null);
-
-    const [height, setHeight] = useState(100);
-    const [width, setWidth] = useState(300);
-
-    const onMouseHeight = useResize({
-        direction: 'vertical',
-        min: 50,
-        onResize: setHeight,
-        startValue: height,
-    });
-
-    const onMouseWidth = useResize({
-        direction: 'horizontal',
-        min: 300,
-        onResize: setWidth,
-        startValue: width,
-        invert: true,
-    });
+    const {
+        width,
+        height,
+        onMouseWidth,
+        onMouseHeight,
+        setWidth,
+        isDescriptionExpanded,
+        isEditorExpanded,
+    } = useTaskLayout();
 
     return (
-        <section className='task-code-page content-wrapper'>
-            <Panel
-                className='task-code-page__description'
-                title='Description'
-                icon={<CodeOutlined />}
-            >
-                <div>
-                    <h2>{task.title}</h2>
-                    <p>{task.description}</p>
-                </div>
-            </Panel>
-
+        <section className='task-code-page'>
+            <TaskDescription
+                task={task}
+                isExpanded={isDescriptionExpanded}
+                onExpand={() => setWidth(0)}
+                onCollapse={() => setWidth(40)}
+            />
             <section
                 className='task-code-page__editor-wrapper'
-                style={{ width: width }}
+                style={{ width: `${width}%` }}
             >
                 <Divider
                     className={'task-code-page__horizontal'}
@@ -57,17 +43,20 @@ const TaskCodePage = ({ task }: Props) => {
                 />
                 <Panel
                     className='task-code-page__editor'
-                    style={{ height: height }}
+                    style={{ height: `${height}px` }}
+                    isExpanded={isEditorExpanded}
                     title={'Code'}
                     icon={
                         <CodeOutlined
                             className={'task-code-page__editor-icon'}
                         />
                     }
+                    onExpandPanel={() => setWidth(100)}
+                    onCollapsePanel={() => setWidth(40)}
                 >
                     <TaskCode
                         starterCode={task.starterCode}
-                        onChange={(code) => console.log(height)}
+                        runCode={(code) => console.log(code)}
                         editorRef={editorRef}
                     />
                     <Divider
