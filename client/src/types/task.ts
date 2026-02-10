@@ -8,11 +8,13 @@ export interface Task extends Text {
 
 export type TaskType = 'theory' | 'code' | 'test';
 
+export type TaskDifficulty = 'Easy' | 'Medium' | 'Hard';
+
 export interface TaskCodeType extends Task {
     type: 'code';
     tests: CodeTest[];
     starterCode: Record<CodeLanguage, string>;
-    point: number;
+    difficulty: TaskDifficulty;
 }
 
 export interface TaskTheory extends Task {
