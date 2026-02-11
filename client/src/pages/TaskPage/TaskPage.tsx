@@ -1,4 +1,4 @@
-import TaskCodePage from '@/pages/TaskCodePage.tsx';
+import TaskCodePage from '@/pages/TaskPage/components/TaskCode/TaskCodePage.tsx';
 import type { TaskCodeType } from '@/types/task.ts';
 import '@/styles/pages/task-page.scss';
 

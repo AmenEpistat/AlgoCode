@@ -2,7 +2,7 @@ import IslandPage from '../pages/IslandPage.tsx';
 import { createBrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ModulePage from '@/pages/ModulePage.tsx';
-import TaskPage from '@/pages/TaskPage.tsx';
+import TaskPage from '@/pages/TaskPage/TaskPage.tsx';
 
 export const router = createBrowserRouter([
     {
