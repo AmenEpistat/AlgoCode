@@ -1,21 +1,38 @@
+.panel__icon {
+  font-size: 24px;
+  color: transparent;
+}
+
 .panel {
-  border-radius: 8px;
   border: 1px solid $accent-bg;
   background-color: $common-sec-bg;
+
+  &:hover .panel__icon {
+    color: $accent-bg;
+  }
+
+  @media (width <= 0) {
+    display: none;
+    background-color: #3aa9e1;
+  }
 }
 
 .panel__title {
   display: flex;
+  align-items: center;
   gap: 8px;
 
   width: 100%;
-  padding: 8px;
+  padding: 4px 16px;
 
   font-size: 14px;
   line-height: 20px;
   font-weight: bold;
   color: $accent-bg;
   background: $secondary-bg;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
 }
+
+.panel__buttons {
+  margin-left: auto;
+}
+
