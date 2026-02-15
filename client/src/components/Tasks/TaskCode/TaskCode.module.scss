@@ -33,3 +33,14 @@
     color: $secondary-bg-hover !important;
   }
 }
+
+.task-code__controls {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.task-code__control-lock {
+  justify-self: flex-start;
+  margin-right: auto;
+}
