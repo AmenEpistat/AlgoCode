@@ -7,12 +7,14 @@ interface CodeEditorProps {
     value: string;
     language: string;
     editorRef?: React.RefObject<any>;
+    isAutoSuggest: boolean;
 }
 
 const CodeEditor = ({
     value,
     language,
     editorRef,
+    isAutoSuggest,
 }: CodeEditorProps) => {
     const handleEditorMount: OnMount = (editor) => {
         if (editorRef) editorRef.current = editor;
@@ -25,7 +27,10 @@ const CodeEditor = ({
                 width='100%'
                 language={language || 'javascript'}
                 defaultValue={value}
-                options={editorOptions}
+                options={{
+                    ...editorOptions,
+                    quickSuggestions: isAutoSuggest,
+                }}
                 theme='light'
                 onMount={handleEditorMount}
             />

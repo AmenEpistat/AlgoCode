@@ -14,8 +14,15 @@ interface TaskCodeProps {
 }
 
 const TaskCode = ({ starterCode, editorRef, runCode }: TaskCodeProps) => {
-    const { language, setLanguage, resetCode, formatCode, getCode } =
-        useTaskCode(starterCode, editorRef);
+    const {
+        language,
+        setLanguage,
+        resetCode,
+        formatCode,
+        getCode,
+        isAutoSuggest,
+        switchAutoSuggest,
+    } = useTaskCode(starterCode, editorRef);
 
     const handleRun = () => {
         const code = getCode();
@@ -30,11 +37,14 @@ const TaskCode = ({ starterCode, editorRef, runCode }: TaskCodeProps) => {
                 onFormat={formatCode}
                 onReset={resetCode}
                 setLanguage={setLanguage}
+                isAutoSuggest={isAutoSuggest}
+                onSwitchAuto={switchAutoSuggest}
             />
             <CodeEditor
                 value={starterCode[language]}
                 language={language}
                 editorRef={editorRef}
+                isAutoSuggest={isAutoSuggest}
             />
             <Button
                 icon={<CaretRightOutlined style={{ fontSize: '30px' }} />}
