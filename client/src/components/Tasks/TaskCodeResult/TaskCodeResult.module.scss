@@ -26,8 +26,8 @@
 .result__header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .result__head-text {
@@ -44,4 +44,45 @@
   &--success {
     color: $primary-bg;
   }
+}
+
+
+.result__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  
+  @media(width <= 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.result__metric {
+  color: $secondary-text;
+  font-size: 16px;
+}
+
+.result__fail-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px
+}
+
+.result__fail-desc {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 14px;
+  color: $secondary-text;
+}
+
+.result__fail-info {
+  padding: 8px;
+  margin-top: 8px;
+
+  font-size: 16px;
+  color: $text-main;
+
+  background-color: $common-bg;
+  border-radius: 8px;
 }

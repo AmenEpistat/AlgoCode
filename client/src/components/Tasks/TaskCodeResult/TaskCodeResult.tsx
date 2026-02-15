@@ -1,9 +1,11 @@
 import styles from './TaskCodeResult.module.scss';
 import Panel from '@/components/Panel/Panel.tsx';
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined } from '@ant-design/icons';
 import type { TestCodeResult } from '@/types/code.ts';
 import { Spin } from 'antd';
 import { classNames } from '@/utils/classNames.ts';
+import ResultHeader from '@/components/Tasks/TaskCodeResult/components/ResultHeader.tsx';
+import ResultFailed from '@/components/Tasks/TaskCodeResult/components/ResultFailed.tsx';
 
 interface Props {
     onCollapse: () => void;
@@ -41,39 +43,17 @@ const TaskCodeResult = ({
                     </div>
                 ) : (
                     <div className={styles['result__content']}>
-                        <div className={styles['result__header']}>
-                            <h3
-                                className={classNames(
-                                    styles['result__title'],
-                                    result?.passed === result?.total &&
-                                        styles['result__title--success']
-                                )}
-                            >
-                                {result?.passed === result?.total
-                                    ? 'Accepted'
-                                    : 'Tests failed'}
-                            </h3>
-                            <p className={styles['result__head-text']}>
-                                {result?.passed}/ {result?.total} testcases
-                                passed
-                            </p>
-                        </div>
+                        <ResultHeader
+                            passed={result?.passed}
+                            total={result?.total}
+                            errorTitle={
+                                result?.lastFailed ? 'Wrong Answer' : ''
+                            }
+                        />
+
                         {result?.lastFailed && (
-                            <div className={styles['result__error-block']}>
-                                <div className={styles['result__error-title']}>
-                                    <CloseCircleOutlined
-                                        style={{ color: '#ff4d4f' }}
-                                    />
-                                    <span>Failed Test Case:</span>
-                                </div>
-                                <div className={styles['result__error-desc']}>
-                                    {result.lastFailed.description}
-                                </div>
-                            </div>
+                            <ResultFailed lastFailed={result.lastFailed} />
                         )}
-                        <div className={styles['result__score']}>
-                            Total Score: <span>{result?.score} pts</span>
-                        </div>
                     </div>
                 )}
             </Spin>

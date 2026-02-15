@@ -1,6 +1,7 @@
 export interface CodeTest {
     id: number;
-    description: string;
+    input: string;
+    output: string;
     run: (userCode: string) => boolean;
 }
 
