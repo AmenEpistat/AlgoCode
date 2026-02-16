@@ -8,27 +8,43 @@ export const useTaskCodeRunner = (tests: CodeTest[]) => {
     const runCode = (code: string) => {
         setIsRunning(true);
 
-        setTimeout(() => {
-            let passedCount = 0;
-            let lastFailed: CodeTest | null = null;
-
-            for (const test of tests) {
-                if (test.run(code)) {
-                    passedCount++;
-                } else {
-                    lastFailed = test;
-                    break;
-                }
+        const worker = new Worker(
+            new URL('./task.worker.ts', import.meta.url),
+            {
+                type: 'module',
             }
+        );
+
+        worker.postMessage({ code, tests });
+
+        const timer = setTimeout(() => {
+            worker.terminate();
 
             setResult({
-                passed: passedCount,
+                status: 'Time Limit Exceeded',
+                passed: 0,
                 total: tests.length,
-                score: passedCount * 10,
-                lastFailed,
+                time: 2000,
+                memory: 0,
+                score: 0,
+                errorMessage: 'Execution took too long (limit: 2000ms)',
             });
             setIsRunning(false);
-        }, 1000);
+        }, 2000);
+
+        worker.onmessage = (e) => {
+            clearTimeout(timer);
+            setResult(e.data);
+            setIsRunning(false);
+            worker.terminate();
+        };
+
+        worker.onerror = (e) => {
+            clearTimeout(timer);
+            console.error('Worker error:', e);
+            setIsRunning(false);
+            worker.terminate();
+        };
     };
 
     return { result, runCode, isRunning };

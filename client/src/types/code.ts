@@ -1,15 +1,21 @@
 export interface CodeTest {
     id: number;
-    input: string;
-    output: string;
-    run: (userCode: string) => boolean;
+    name: string;
+    input: any[];
+    expected: any;
+    output?: any;
 }
 
 export interface TestCodeResult {
+    status: string;
     passed: number;
     total: number;
     score: number;
-    lastFailed: CodeTest | null;
+    lastFailed?: CodeTest | null;
+    errorMessage?: string;
+    time?: number;
+    memory?: number;
+    logs?: string[];
 }
 
 export type CodeLanguage = 'javascript' | 'cpp' | 'python';
