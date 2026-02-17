@@ -6,7 +6,9 @@ import { Divider } from '@/components/Divider/Divider.tsx';
 import Panel from '@/components/Panel/Panel.tsx';
 import { CodeOutlined } from '@ant-design/icons';
 import { useTaskLayout } from '@/pages/TaskPage/components/TaskCode/useTaskLayout.ts';
+import { useTaskCodeRunner} from '@/pages/TaskPage/components/TaskCode/useTaskCodeRunner.ts';
 import TaskDescription from '@/components/Tasks/TaskDescription/TaskDescription.tsx';
+import TaskCodeResult from '@/components/Tasks/TaskCodeResult/TaskCodeResult.tsx';
 
 interface Props {
     task: TaskCodeType;
@@ -23,6 +25,8 @@ const TaskCodePage = ({ task }: Props) => {
         isDescriptionExpanded,
         isEditorExpanded,
     } = useTaskLayout();
+
+    const { result, runCode, isRunning } = useTaskCodeRunner(task.tests);
 
     return (
         <section className='task-code-page'>
@@ -56,7 +60,7 @@ const TaskCodePage = ({ task }: Props) => {
                 >
                     <TaskCode
                         starterCode={task.starterCode}
-                        runCode={(code) => console.log(code)}
+                        runCode={(code) => runCode(code)}
                         editorRef={editorRef}
                     />
                     <Divider
@@ -65,6 +69,13 @@ const TaskCodePage = ({ task }: Props) => {
                         onMouseDown={onMouseHeight}
                     />
                 </Panel>
+                <TaskCodeResult
+                    isExpanded={isEditorExpanded}
+                    onExpand={() => setWidth(100)}
+                    onCollapse={() => setWidth(40)}
+                    result={result}
+                    isRunning={isRunning}
+                />
             </section>
         </section>
     );
