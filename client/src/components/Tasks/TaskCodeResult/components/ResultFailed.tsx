@@ -1,25 +1,21 @@
 import styles from '@/components/Tasks/TaskCodeResult/TaskCodeResult.module.scss';
 import type { CodeTest } from '@/types/code.ts';
+import TextCopy from '@/components/TextCopy/TextCopy.tsx';
 
 interface Props {
     lastFailed: CodeTest;
+    logs?: string[];
 }
 
-const ResultFailed = ({ lastFailed }: Props) => {
+const ResultFailed = ({ lastFailed, logs }: Props) => {
     return (
         <div className={styles['result__fail-wrapper']}>
-            <div className={styles['result__fail-desc']}>
-                Input
-                <span className={styles['result__fail-info']}>
-                    &#39;&#39;{lastFailed.input}&#39;&#39;
-                </span>
-            </div>
-            <div className={styles['result__fail-desc']}>
-                Expected:
-                <span className={styles['result__fail-info']}>
-                    &#39;&#39;{lastFailed.output}&#39;&#39;
-                </span>
-            </div>
+            <TextCopy text={lastFailed.input} title={'Input'} />
+            <TextCopy text={lastFailed.output} title={'Output'} />
+            <TextCopy text={lastFailed.expected} title={'Expected'} />
+            {logs && logs.length > 0 && (
+                <TextCopy text={logs} title={'Console'} />
+            )}
         </div>
     );
 };

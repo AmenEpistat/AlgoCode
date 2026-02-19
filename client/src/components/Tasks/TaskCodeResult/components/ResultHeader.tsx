@@ -2,13 +2,13 @@ import styles from '../TaskCodeResult.module.scss';
 import { classNames } from '@/utils/classNames.ts';
 
 interface Props {
-    errorTitle?: string;
+    status: string;
     passed: number;
     total: number;
 }
 
-const ResultHeader = ({ errorTitle, passed, total }: Props) => {
-    const accepted = passed === total;
+const ResultHeader = ({ status, passed, total }: Props) => {
+    const accepted = passed === total && passed !== 0;
 
     return (
         <div className={styles['result__header']}>
@@ -18,11 +18,10 @@ const ResultHeader = ({ errorTitle, passed, total }: Props) => {
                     accepted && styles['result__title--success']
                 )}
             >
-                {accepted && 'Accepted'}
-                {!accepted && errorTitle}
+                {status}
             </h3>
             <p className={styles['result__head-text']}>
-                {passed}/ {total} testcases passed
+                {passed} / {total} testcases passed
             </p>
         </div>
     );
