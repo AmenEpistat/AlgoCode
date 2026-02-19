@@ -1,0 +1,40 @@
+.text-copy__button {
+  position: absolute;
+  top: 32px;
+  right: 8px;
+
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  background: rgba($common-bg, 0.8);
+}
+
+.text-copy {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  font-size: 14px;
+  color: $secondary-text;
+
+  &:hover .text-copy__button {
+    opacity: 1;
+  }
+}
+
+.text-copy__info {
+  padding: 8px;
+  margin-top: 8px;
+
+  font-size: 16px;
+  color: $text-main;
+  font-family: Monaco, Consolas, monospace;
+  word-break: break-all;
+
+  background-color: $common-bg;
+  border-radius: 8px;
+}
+
+
+
