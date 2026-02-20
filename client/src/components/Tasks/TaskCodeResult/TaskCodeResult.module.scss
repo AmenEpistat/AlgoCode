@@ -12,6 +12,10 @@
 }
 
 .result__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
   padding: 16px;
 }
 
@@ -32,13 +36,14 @@
 
 .result__head-text {
   color: $secondary-text;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
 }
 
 .result__title {
   margin-bottom: 0;
-  font-size: 18px;
+  margin-right: 16px;
+  font-size: 24px;
   color: $secondary-bg;
 
   &--success {
@@ -51,15 +56,24 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  
-  @media(width <= 600px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .result__metric {
-  color: $secondary-text;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 16px;
+
+  color: $text-main;
   font-size: 16px;
+
+  background-color: $common-bg;
+  border-radius: 8px;
+}
+
+.result__metric-value {
+  font-size: 24px;
 }
 
 .result__fail-wrapper {
@@ -68,21 +82,6 @@
   gap: 16px
 }
 
-.result__fail-desc {
-  display: flex;
-  flex-direction: column;
-
-  font-size: 14px;
-  color: $secondary-text;
-}
-
-.result__fail-info {
-  padding: 8px;
-  margin-top: 8px;
-
-  font-size: 16px;
-  color: $text-main;
-
-  background-color: $common-bg;
-  border-radius: 8px;
+.result__error-message {
+  color: $secondary-bg !important;
 }
