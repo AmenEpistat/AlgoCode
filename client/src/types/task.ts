@@ -19,8 +19,11 @@ export interface TaskCodeType extends Task {
 
 export interface TaskTheory extends Task {
     type: 'theory';
+    body: string;
 }
 
 export interface TaskTest extends Task {
     type: 'test';
 }
+
+export type TaskUnion = TaskCodeType | TaskTheory | TaskTest;
