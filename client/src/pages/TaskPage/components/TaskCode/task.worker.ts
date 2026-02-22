@@ -23,8 +23,6 @@ self.onmessage = (e: MessageEvent): void => {
             '...args',
             `
         ${code}
-   
-        console.log('ff');
         
         let userFn;
         try {
@@ -74,7 +72,7 @@ self.onmessage = (e: MessageEvent): void => {
             err instanceof SyntaxError || err.name === 'SyntaxError';
         self.postMessage({
             status: isSyntax ? 'Syntax Error' : 'Runtime Error',
-            errorMessage: err.message,
+            errorMessage: err.stack,
             logs,
         });
     }
