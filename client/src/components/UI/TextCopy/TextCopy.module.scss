@@ -1,12 +1,12 @@
 .text-copy__button {
   position: absolute;
-  top: 32px;
+  top: 8px;
   right: 8px;
 
   opacity: 0;
   transition: opacity 0.2s ease;
 
-  background: rgba($common-bg, 0.8);
+  background: transparent;
 }
 
 .text-copy {

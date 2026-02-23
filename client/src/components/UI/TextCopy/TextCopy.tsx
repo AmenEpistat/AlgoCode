@@ -1,13 +1,16 @@
 import { Button, message } from 'antd';
 import { CopyOutlined } from '@ant-design/icons';
 import styles from './TextCopy.module.scss';
+import { classNames } from '@/utils/classNames.ts';
 
 interface Props {
     text: any;
-    title?: string;
+    className?: string;
+    buttonClassName?: string;
+    showText?: boolean;
 }
 
-const TextCopy = ({ text, title }: Props) => {
+const TextCopy = ({ text, className, showText, buttonClassName }: Props) => {
     const displayText =
         typeof text === 'object' ? JSON.stringify(text, null, 2) : String(text);
 
@@ -22,12 +25,21 @@ const TextCopy = ({ text, title }: Props) => {
 
     return (
         <div className={styles['text-copy']}>
-            {title && (
-                <span className={styles['text-copy__title']}>{title}:</span>
+            {showText && (
+                <span
+                    className={classNames(
+                        styles['text-copy__info'],
+                        className !== undefined && className
+                    )}
+                >
+                    {displayText}
+                </span>
             )}
-            <span className={styles['text-copy__info']}>{displayText}</span>
             <Button
-                className={styles['text-copy__button']}
+                className={classNames(
+                    styles['text-copy__button'],
+                    buttonClassName !== undefined && buttonClassName
+                )}
                 icon={<CopyOutlined className={styles['text-copy__icon']} />}
                 type='text'
                 size='small'
