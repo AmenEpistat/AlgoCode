@@ -1,63 +1,33 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import Panel from '@/components/Panel/Panel.tsx';
-import { BookOutlined } from '@ant-design/icons';
 import '@/styles/pages/task-theory-page.scss';
 import type { TaskTheory } from '@/types/task.ts';
+import { useTaskTheoryProgress } from '@/pages/TaskPage/components/TaskTheory/useTaskTheoryProgress.ts';
+import TaskMarkdown from '@/components/Tasks/common/TaskMarkdown/TaskMarkdown.tsx';
+import TaskTheoryFooter from '@/components/Tasks/TaskTheory/TaskTheoryFooter/TaskTheoryFooter.tsx';
 
 interface Props {
     task: TaskTheory;
 }
 
 const TaskTheoryPage = ({ task }: Props) => {
+    const { isCompleted, handleAction } = useTaskTheoryProgress(task.progress);
+
     return (
-        <section className='task-theory-page'>
-            <Panel
-                className='task-theory-page__panel'
-                title={task.title}
-                icon={<BookOutlined className='task-theory-page__icon' />}
-            >
-                <div className='task-theory-page__content'>
-                    <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        components={{
-                            h3: ({ node, ...props }) => (
-                                <h3
-                                    className='task-theory-page__subtitle'
-                                    {...props}
-                                />
-                            ),
-                            p: ({ node, ...props }) => (
-                                <p
-                                    className='task-theory-page__text'
-                                    {...props}
-                                />
-                            ),
-                            ul: ({ node, ...props }) => (
-                                <ul
-                                    className='task-theory-page__list'
-                                    {...props}
-                                />
-                            ),
-                            a: ({ node, ...props }) => (
-                                <a
-                                    className='task-theory-page__link'
-                                    target='_blank'
-                                    {...props}
-                                />
-                            ),
-                            code: ({ node, ...props }) => (
-                                <code
-                                    className='task-theory-page__inline-code'
-                                    {...props}
-                                />
-                            ),
-                        }}
-                    >
-                        {task.body}
-                    </ReactMarkdown>
-                </div>
-            </Panel>
+        <section className='task-theory-page content-wrapper'>
+            <h2 className='task-theory-page__title'>{task.title}</h2>
+            <div className='task-theory-page__content'>
+                <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={TaskMarkdown}
+                >
+                    {task.body}
+                </ReactMarkdown>
+                <TaskTheoryFooter
+                    isCompleted={isCompleted}
+                    onAction={handleAction}
+                />
+            </div>
         </section>
     );
 };

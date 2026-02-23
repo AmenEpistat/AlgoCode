@@ -1,23 +1,20 @@
-.task-theory-page__link {
-  color: $accent-bg;
-  text-decoration: none;
-  border-bottom: 1px dashed $accent-bg;
-  transition: opacity 0.2s;
-
-  &:hover {
-    opacity: 0.7;
-  }
+.task-theory-page {
+  background: $common-sec-bg;
 }
 
-.task-theory-page__inline-code {
-  background-color: rgba($accent-bg, 0.1);
-  color: $accent-bg;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 0.9em;
+.task-theory-page__content {
+  max-width: 900px;
+  margin-right: auto;
 }
 
-.task-theory-page__content > * {
-  margin-bottom: 12px;
+.task-theory-page__title {
+  padding-left: 32px;
+  margin-bottom: 24px;
+
+  color: $text-main;
+  font-weight: 700;
+  font-size: 28px;
+
+  background: url("@/assets/images/icons/page_icon.svg") no-repeat left center;
+  background-size: 24px;
 }
