@@ -1,9 +1,12 @@
 .task-code-page {
   height: 100vh;
+  padding: var(--content-block-padding) 16px 16px;
+
   align-items: flex-start;
   display: flex;
   gap: 8px;
-  padding: var(--content-block-padding) 16px 16px;
+
+  background: $common-bg;
 }
 
 .task-code-page__editor {

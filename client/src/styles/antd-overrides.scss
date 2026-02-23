@@ -14,6 +14,18 @@
   }
 }
 
+.ant-btn-primary-outline {
+  border: 1px solid $primary-bg;
+  border-radius: 0;
+  color: $primary-bg;
+
+  &:hover, &:focus {
+    box-shadow: none !important;
+    border-color: $primary-bg-hover !important;
+    color: $primary-bg-hover !important;
+  }
+}
+
 .ant-btn-secondary {
   background-color: $secondary-bg;
   border-radius: 0;
@@ -25,6 +37,19 @@
     box-shadow: none !important;
     background-color: $secondary-bg-hover !important;
     color: $accent-bg !important;
+  }
+}
+
+.ant-btn-secondary-outline {
+  border: 2px solid $secondary-bg;
+  border-radius: 0;
+  color: $secondary-bg;
+
+  &:hover, &:focus {
+    box-shadow: none !important;
+    border: 2px solid $secondary-bg-hover !important;
+    color: $secondary-bg-hover !important;
+    opacity: 0.6 !important;
   }
 }
 
