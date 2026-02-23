@@ -1,7 +1,7 @@
 import type { IslandData, IslandType } from '../../types/island.ts';
 import styles from './Island.module.scss';
 import { classNames } from '../../utils/classNames.ts';
-import Plank from '../Plank/Plank.tsx';
+import Plank from '@/components/UI/Plank/Plank.tsx';
 
 interface IslandProps {
     island: IslandData;

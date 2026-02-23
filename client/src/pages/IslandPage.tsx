@@ -1,6 +1,6 @@
 import { ModuleCard } from '@/components/ModuleCard/ModuleCard.tsx';
 import '@/styles/pages/island-page.scss';
-import { ProgressBar } from '@/components/ProgressBar/ProgressBar.tsx';
+import { ProgressBar } from '@/components/UI/ProgressBar/ProgressBar.tsx';
 import { pluralize } from '@/utils/pluralize.ts';
 import { Button } from 'antd';
 

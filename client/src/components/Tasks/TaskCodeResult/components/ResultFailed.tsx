@@ -1,6 +1,6 @@
 import styles from '@/components/Tasks/TaskCodeResult/TaskCodeResult.module.scss';
 import type { CodeTest } from '@/types/code.ts';
-import TextCopy from '@/components/TextCopy/TextCopy.tsx';
+import TextCopy from '@/components/UI/TextCopy/TextCopy.tsx';
 
 interface Props {
     lastFailed: CodeTest;

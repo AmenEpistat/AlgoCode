@@ -2,7 +2,7 @@ import styles from './ModuleCard.module.scss';
 import type { Module } from '@/types/module.ts';
 import { classNames } from '@/utils/classNames.ts';
 import { Button } from 'antd';
-import { ProgressBar } from '@/components/ProgressBar/ProgressBar.tsx';
+import { ProgressBar } from '@/components/UI/ProgressBar/ProgressBar.tsx';
 
 interface ModuleCardProps {
     module: Module;

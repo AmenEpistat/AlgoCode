@@ -1,6 +1,6 @@
 import { CodeOutlined } from '@ant-design/icons';
 import DifficultyTag from '@/components/DifficultyTag/DifficultyTag.tsx';
-import Panel from '@/components/Panel/Panel.tsx';
+import Panel from '@/components/UI/Panel/Panel.tsx';
 import type { TaskCodeType } from '@/types/task.ts';
 import styles from './TaskDescription.module.scss';
 

@@ -1,4 +1,4 @@
-import { classNames } from '../../utils/classNames';
+import { classNames } from '../../../utils/classNames.ts';
 import styles from './Fog.module.scss';
 
 interface FogProps {

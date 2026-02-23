@@ -1,7 +1,7 @@
 import type { IslandData } from '../../types/island.ts';
 import Island from '../Island/Island.tsx';
 import styles from './WorldMap.module.scss';
-import Fog from '../Fog/Fog.tsx';
+import Fog from '@/components/UI/Fog/Fog.tsx';
 import { useState } from 'react';
 import { classNames } from '../../utils/classNames.ts';
 

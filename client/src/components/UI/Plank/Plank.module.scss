@@ -3,7 +3,7 @@
 
   width: 100px;
   height: 100px;
-  background-image: url("../../assets/images/plank_1.png");
+  background-image: url("../../../assets/images/plank_1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -21,7 +21,7 @@
   width: 20px;
   height: 20px;
 
-  background: url("../../assets/images/lock.png") no-repeat;
+  background: url("../../../assets/images/lock.png") no-repeat;
   background-size: 15px 15px;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .locked {
-  background-image: url("../../assets/images/plank.png");
+  background-image: url("../../../assets/images/plank.png");
 }
 
 .plank__progress {

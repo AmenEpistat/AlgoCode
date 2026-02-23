@@ -1,4 +1,4 @@
-import { classNames } from '../../utils/classNames.ts';
+import { classNames } from '../../../utils/classNames.ts';
 import styles from './Plank.module.scss';
 
 interface TabletProps {
