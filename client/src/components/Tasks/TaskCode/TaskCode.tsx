@@ -2,7 +2,7 @@ import styles from './TaskCode.module.scss';
 import { Button } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import React from 'react';
-import CodeEditor from '@/components/CodeEditor/CodeEditor.tsx';
+import CodeEditor from '@/components/Tasks/TaskCode/components/CodeEditor/CodeEditor.tsx';
 import type { CodeLanguage } from '@/types/code.ts';
 import { useTaskCode } from '@/components/Tasks/TaskCode/useTaskCode.ts';
 import TaskCodeControls from '@/components/Tasks/TaskCode/TaskCodeControls.tsx';
