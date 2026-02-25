@@ -1,11 +1,13 @@
 import styles from './TaskCodeResult.module.scss';
-import Panel from '@/components/Panel/Panel.tsx';
+import Panel from '@/components/UI/Panel/Panel.tsx';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import type { TestCodeResult } from '@/types/code.ts';
 import { Spin } from 'antd';
 import { classNames } from '@/utils/classNames.ts';
-import ResultHeader from '@/components/Tasks/TaskCodeResult/components/ResultHeader.tsx';
-import ResultFailed from '@/components/Tasks/TaskCodeResult/components/ResultFailed.tsx';
+import ResultHeader from '@/components/Tasks/TaskCode/TaskCodeResult/components/ResultHeader.tsx';
+import ResultFailed from '@/components/Tasks/TaskCode/TaskCodeResult/components/ResultFailed.tsx';
+import ResultSystemError from '@/components/Tasks/TaskCode/TaskCodeResult/components/ResultSystemError.tsx';
+import ResultMetrics from '@/components/Tasks/TaskCode/TaskCodeResult/components/ResultMetrics.tsx';
 
 interface Props {
     onCollapse: () => void;
@@ -44,15 +46,29 @@ const TaskCodeResult = ({
                 ) : (
                     <div className={styles['result__content']}>
                         <ResultHeader
-                            passed={result?.passed}
-                            total={result?.total}
-                            errorTitle={
-                                result?.lastFailed ? 'Wrong Answer' : ''
-                            }
+                            passed={result?.passed ?? 0}
+                            total={result?.total ?? 0}
+                            status={result.status}
                         />
 
                         {result?.lastFailed && (
-                            <ResultFailed lastFailed={result.lastFailed} />
+                            <ResultFailed
+                                lastFailed={result.lastFailed}
+                                logs={result.logs}
+                            />
+                        )}
+
+                        {result.errorMessage && (
+                            <ResultSystemError
+                                errorMessage={result.errorMessage}
+                            />
+                        )}
+
+                        {result.time && result.memory && (
+                            <ResultMetrics
+                                time={result.time}
+                                memory={result.memory}
+                            />
                         )}
                     </div>
                 )}

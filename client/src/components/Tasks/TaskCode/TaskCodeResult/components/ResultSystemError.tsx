@@ -1,5 +1,5 @@
 import TextCopy from '@/components/UI/TextCopy/TextCopy.tsx';
-import styles from '@/components/Tasks/TaskCodeResult/TaskCodeResult.module.scss';
+import styles from '@/components/Tasks/TaskCode/TaskCodeResult/TaskCodeResult.module.scss';
 
 interface Props {
     errorMessage: string;

@@ -7,8 +7,8 @@ import Panel from '@/components/UI/Panel/Panel.tsx';
 import { CodeOutlined } from '@ant-design/icons';
 import { useTaskLayout } from '@/pages/TaskPage/components/TaskCode/useTaskLayout.ts';
 import { useTaskCodeRunner} from '@/pages/TaskPage/components/TaskCode/useTaskCodeRunner.ts';
-import TaskDescription from '@/components/Tasks/TaskDescription/TaskDescription.tsx';
-import TaskCodeResult from '@/components/Tasks/TaskCodeResult/TaskCodeResult.tsx';
+import TaskDescription from '@/components/Tasks/TaskCode/TaskDescription/TaskDescription.tsx';
+import TaskCodeResult from '@/components/Tasks/TaskCode/TaskCodeResult/TaskCodeResult.tsx';
 
 interface Props {
     task: TaskCodeType;
