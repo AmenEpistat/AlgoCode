@@ -1,0 +1,39 @@
+.quiz-card__question-order {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 16px;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.quiz-card__options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: min-content;
+
+  font-size: 64px !important;
+
+  :global(.ant-radio-inner) {
+    width: 24px !important;
+    height: 24px;
+  }
+
+  :global(.ant-radio-checked .ant-radio-inner) {
+    background-color: $secondary-bg;
+    border-color: $secondary-bg;
+  }
+
+  :global(.ant-radio-wrapper:hover .ant-radio-inner) {
+    border-color: $secondary-bg-hover;
+  }
+
+  :global(.ant-radio-label) {
+    font-size: 16px !important;
+  }
+}
