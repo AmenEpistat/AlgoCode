@@ -1,4 +1,4 @@
-import styles from './TaskCode.module.scss';
+import styles from '../TaskCode.module.scss';
 import { Button, Select } from 'antd';
 import {
     AlignLeftOutlined,
