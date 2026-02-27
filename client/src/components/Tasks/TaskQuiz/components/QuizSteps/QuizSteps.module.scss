@@ -1,0 +1,30 @@
+.quiz-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  height: min-content;
+}
+
+.quiz-steps__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  background: $accent-bg;
+  color: $secondary-bg;
+
+  cursor: pointer;
+}
+
+.quiz-steps__item--active {
+  border: 1px solid $secondary-bg;
+}
+
+.quiz-steps__item--answered {
+  background: $secondary-bg;
+  color: $accent-bg;
+}
