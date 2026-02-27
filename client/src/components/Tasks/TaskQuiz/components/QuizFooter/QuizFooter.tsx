@@ -1,33 +1,36 @@
 import styles from './QuizFooter.module.scss';
 import { Button } from 'antd';
-import { LeftOutlined, CheckOutlined, RightOutlined } from '@ant-design/icons';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 interface QuizFooterProps {
     onPrev?: () => void;
     onNext: () => void;
     isLast: boolean;
-    canNext: boolean;
+    isFirst: boolean;
 }
 
 export const QuizFooter = ({
     onPrev,
     onNext,
     isLast,
-    canNext,
+    isFirst,
 }: QuizFooterProps) => (
-    <div className={styles.footer}>
-        <div className={styles.footer__left}>
-            {onPrev && (
-                <Button type='text' icon={<LeftOutlined />} onClick={onPrev}>
-                    Назад
-                </Button>
-            )}
-        </div>
+    <div className={styles['quiz-footer']}>
+        {!isFirst && (
+            <Button
+                size='large'
+                className={'ant-btn-accent'}
+                icon={<LeftOutlined />}
+                onClick={onPrev}
+            >
+                Назад
+            </Button>
+        )}
         <Button
             size='large'
-            disabled={!canNext}
             onClick={onNext}
-            icon={isLast ? <CheckOutlined /> : <RightOutlined />}
+            className={'ant-btn-secondary'}
+            icon={!isLast && <RightOutlined />}
         >
             {isLast ? 'Завершить' : 'Вперед'}
         </Button>
