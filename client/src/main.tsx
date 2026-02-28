@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client';
 import './index.scss';
 import 'antd/dist/reset.css';
 import App from './App.tsx';
+import { StoreProvider } from '@/store/StoreContext';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <App />
+        <StoreProvider>
+            <App />
+        </StoreProvider>
     </StrictMode>
 );
