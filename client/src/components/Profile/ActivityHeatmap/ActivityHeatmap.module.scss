@@ -1,0 +1,21 @@
+.heatmap {
+  width: fit-content;
+  padding: 16px;
+
+  color: $text-main;
+
+  background: $common-sec-bg;
+  border-radius: 8px;
+  border: 1px solid $text-main;
+
+  svg {
+    max-width: 100%;
+  }
+}
+
+.heatmap__title {
+  margin-bottom: 16px;
+
+  font-size: 16px;
+  font-weight: 400;
+}
