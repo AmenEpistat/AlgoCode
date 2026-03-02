@@ -6,5 +6,11 @@ export default {
         'scss/at-import-partial-extension': null,
         'selector-class-pattern': null,
         'declaration-empty-line-before': null,
+        'selector-pseudo-class-no-unknown': [
+            true,
+            {
+                ignorePseudoClasses: ['global'],
+            },
+        ],
     },
 };

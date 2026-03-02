@@ -1,0 +1,33 @@
+{
+  "name": "algocode",
+  "version": "1.0.0",
+  "description": "![ppp](https://github.com/user-attachments/assets/2ce17dfc-989d-463f-be6f-11ef6b2a307e)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmenEpistat/AlgoCode1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmenEpistat/AlgoCode1/issues"
+  },
+  "homepage": "https://github.com/AmenEpistat/AlgoCode1#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.1"
+  },
+  "lint-staged": {
+    "client/src/**/*.{js,jsx,ts,tsx}": [
+      "npm run --prefix client lint:fix"
+    ],
+    "client/src/**/*.{scss,css}": [
+      "npm run --prefix client stylelint:fix"
+    ]
+  }
+}
