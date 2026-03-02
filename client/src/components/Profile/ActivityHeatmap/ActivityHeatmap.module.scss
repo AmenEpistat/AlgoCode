@@ -1,4 +1,6 @@
 .heatmap {
+  @include border-shadow;
+
   width: fit-content;
   padding: 16px;
 
@@ -6,7 +8,6 @@
 
   background: $common-sec-bg;
   border-radius: 8px;
-  border: 1px solid $text-main;
 
   svg {
     max-width: 100%;
