@@ -1,0 +1,54 @@
+.activity-feed {
+  padding: 16px;
+
+  @include border-shadow;
+}
+
+.activity-feed__header {
+  display: flex;
+  justify-content: space-between;
+
+  padding-left: 16px;
+}
+
+.activity-feed__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $secondary-text;
+}
+
+.activity-feed__label {
+  color: $text-main;
+  font-size: 18px;
+}
+
+.activity-feed__event-item {
+  padding: 16px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  &:nth-child(2n) {
+    background: $common-bg;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.activity-feed__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-feed__event-time {
+  font-size: 14px;
+
+  opacity: 0.7;
+}
