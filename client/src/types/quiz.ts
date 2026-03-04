@@ -8,4 +8,5 @@ export interface Quiz {
     question: string;
     options: QuizOption[];
     correctOptionId: string | string[];
+    point: number;
 }
