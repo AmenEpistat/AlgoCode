@@ -1,0 +1,40 @@
+import type { IslandData } from '@/types/island.ts';
+
+export const LOGIN_BACKGROUND_ISLANDS: IslandData[] = [
+    {
+        id: '1',
+        title: 'Остров Сортировок',
+        type: 'sort',
+        x: 14,
+        y: 25,
+        progress: 46,
+        isLocked: false,
+        isCompleted: false,
+        description: 'Изучи основы алгоритмов сортировки',
+        order: 2,
+    },
+    {
+        id: '2',
+        title: 'Лес Рекурсии',
+        type: 'recursive',
+        x: 30,
+        y: 50,
+        progress: 100,
+        isLocked: false,
+        isCompleted: true,
+        description: 'Погружение в глубину функций',
+        order: 1,
+    },
+    {
+        id: '3',
+        title: 'Пик Динамики',
+        type: 'plain',
+        x: 64,
+        y: 25,
+        progress: 0,
+        isLocked: true,
+        isCompleted: false,
+        description: 'Сложные задачи динамического программирования',
+        order: 3,
+    },
+];
