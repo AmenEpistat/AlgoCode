@@ -3,6 +3,7 @@ import '@/styles/pages/login-page.scss';
 import { AUTH_URLS } from '@/config/api.ts';
 import { LOGIN_BACKGROUND_ISLANDS } from '@/mocks/island.ts';
 import { Button } from 'antd';
+import { GithubFilled } from '@ant-design/icons';
 
 const LoginPage = () => {
     const handleLogin = (provider: 'google' | 'github') => {
@@ -11,42 +12,44 @@ const LoginPage = () => {
     };
 
     return (
-        <div className='login-page'>
+        <section className='login-page'>
             <div className='login-page__background-container'>
                 <WorldMap islands={LOGIN_BACKGROUND_ISLANDS} />
             </div>
 
             <div className='login-page__overlay'>
-                <div className='login-page__auth-card auth-card'>
-                    <h1 className='auth-card__title'>AlgoCode</h1>
-                    <p className='auth-card__subtitle'>
+                <section className='login-page__content'>
+                    <p className='login-page__subtitle'>
                         Твое приключение в мир алгоритмов начинается здесь
                     </p>
+                </section>
 
+                <div className='login-page__auth-card auth-card'>
+                    <h1 className='auth-card__title'>AlgoCode</h1>
+                    <p className='auth-card__footer'>
+                        By clicking &#34;Sign Up&#34;, you agree to our Terms
+                        and you have read our Privacy Policy.
+                    </p>
                     <div className='auth-card__buttons'>
                         <Button
                             size='large'
                             className='btn btn-google'
+                            type={'text'}
                             onClick={() => handleLogin('google')}
-                        >
-                            <span>Войти через Google</span>
-                        </Button>
+                        />
 
                         <Button
                             size='large'
                             className='btn btn-github'
+                            type={'text'}
                             onClick={() => handleLogin('github')}
                         >
-                            <span>Войти через GitHub</span>
+                            <GithubFilled className='btn-github__icon' />
                         </Button>
                     </div>
-
-                    <p className='auth-card__footer'>
-                        Авторизуясь, ты принимаешь правила честной игры
-                    </p>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
