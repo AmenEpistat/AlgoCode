@@ -7,6 +7,7 @@ export interface IProgress extends Document {
     stats: {
         totalPoints: number;
         rank: number;
+        level: number;
     };
 }
 
@@ -15,8 +16,9 @@ const ProgressSchema = new Schema({
     currentIslandId: { type: Schema.Types.ObjectId, ref: 'Island' },
     unlockedIslands: [{ type: Schema.Types.ObjectId, ref: 'Island' }],
     stats: {
-        totalPoints: { type: Number, default: 0 },
+        totalXP: { type: Number, default: 0 },
         rank: { type: Number, default: 0 },
+        level: { type: Number, default: 1 },
     },
 });
 
