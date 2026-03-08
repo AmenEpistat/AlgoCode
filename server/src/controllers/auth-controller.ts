@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import ApiError from '../exceptions/ApiError.js';
+import ApiError from '../exceptions/api-error';
 
 class AuthController {
-    private readonly CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+    private readonly CLIENT_URL =
+        process.env.CLIENT_URL || 'http://localhost:5173';
 
     public authSuccess = (req: Request, res: Response, next: NextFunction) => {
         try {

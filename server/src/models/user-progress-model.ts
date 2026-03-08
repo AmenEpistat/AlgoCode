@@ -12,7 +12,12 @@ export interface IProgress extends Document {
 }
 
 const ProgressSchema = new Schema({
-    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, unique: true },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+        unique: true,
+    },
     currentIslandId: { type: Schema.Types.ObjectId, ref: 'Island' },
     unlockedIslands: [{ type: Schema.Types.ObjectId, ref: 'Island' }],
     stats: {
@@ -22,4 +27,7 @@ const ProgressSchema = new Schema({
     },
 });
 
-export const UserProgress = mongoose.model<IProgress>('UserProgress', ProgressSchema);
+export const UserProgress = mongoose.model<IProgress>(
+    'UserProgress',
+    ProgressSchema
+);

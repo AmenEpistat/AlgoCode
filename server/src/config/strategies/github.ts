@@ -1,7 +1,8 @@
 import { Strategy as GitHubStrategy } from 'passport-github2';
-import { User } from '../../models/User.js';
+import { User } from '../../models/user-model';
 
-export const githubStrategy = new GitHubStrategy({
+export const githubStrategy = new GitHubStrategy(
+    {
         clientID: process.env.GITHUB_CLIENT_ID || '',
         clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
         callbackURL: '/api/auth/github/callback',
@@ -21,4 +22,5 @@ export const githubStrategy = new GitHubStrategy({
         } catch (err) {
             return done(err as Error);
         }
-    });
+    }
+);

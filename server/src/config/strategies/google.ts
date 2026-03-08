@@ -1,7 +1,8 @@
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { User } from '../../models/User.js';
+import { User } from '../../models/user-model';
 
-export const googleStrategy = new GoogleStrategy({
+export const googleStrategy = new GoogleStrategy(
+    {
         clientID: process.env.GOOGLE_CLIENT_ID || '',
         clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
         callbackURL: '/api/auth/google/callback',
@@ -21,4 +22,5 @@ export const googleStrategy = new GoogleStrategy({
         } catch (err) {
             return done(err as Error);
         }
-    });
+    }
+);

@@ -1,5 +1,5 @@
 import passport from 'passport';
-import { User } from '../models/User.js';
+import { User } from '../models/user-model';
 import { googleStrategy } from './strategies/google.js';
 import { githubStrategy } from './strategies/github.js';
 

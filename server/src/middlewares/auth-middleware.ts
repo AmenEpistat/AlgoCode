@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import ApiError from '../exceptions/ApiError.js';
+import ApiError from '../exceptions/api-error';
 
 class AuthMiddleware {
     public isAuthenticated(req: Request, res: Response, next: NextFunction) {

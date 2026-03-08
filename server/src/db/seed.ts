@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { Island } from '../models/Island';
-import { Module } from '../models/Module';
-import { Task } from '../models/Task';
+import { Island } from '../models/island-model';
+import { Module } from '../models/module-model';
+import { Task } from '../models/task-model';
 
 dotenv.config();
 
