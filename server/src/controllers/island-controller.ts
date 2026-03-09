@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { IslandService } from '../services/island-service';
 import ApiError from '../exceptions/api-error';
+import { catchAsync } from '../utils/catch-async';
 
 class IslandController {
     private islandService: IslandService;
@@ -9,37 +10,25 @@ class IslandController {
         this.islandService = new IslandService();
     }
 
-    public getIslands = async (
-        req: Request,
-        res: Response,
-        next: NextFunction
-    ): Promise<void> => {
-        try {
+    public getIslands = catchAsync(
+        async (req: Request, res: Response, next: NextFunction) => {
             const data = await this.islandService.getAllIslands();
             res.json(data);
-        } catch (error) {
-            next(error);
         }
-    };
+    );
 
-    public getIslandBySlug = async (
-        req: Request,
-        res: Response,
-        next: NextFunction
-    ): Promise<void> => {
-        try {
+    public getIslandBySlug = catchAsync(
+        async (req: Request, res: Response, next: NextFunction) => {
             const { slug } = req.params;
             const data = await this.islandService.getFullIslandBySlug(slug);
 
             if (!data) {
-                throw ApiError.NotFound('Остров с таким slug не найден');
+                throw ApiError.NotFound('Остров не найден');
             }
 
             res.json(data);
-        } catch (error) {
-            next(error);
         }
-    };
+    );
 }
 
 export default new IslandController();
