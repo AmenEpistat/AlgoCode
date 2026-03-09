@@ -1,5 +1,6 @@
 import { Island } from '../models/island-model';
 import { Module } from '../models/module-model';
+import ApiError from '../exceptions/api-error';
 
 export class IslandService {
     async getAllIslands() {
@@ -15,7 +16,9 @@ export class IslandService {
 
     async getFullIslandBySlug(slug: string | string[]) {
         const island = await Island.findOne({ slug });
-        if (!island) return null;
+        if (!island) {
+            throw ApiError.NotFound('Остров не найден');
+        }
 
         const modules = await Module.find({ islandId: island._id }).sort(
             'order'
