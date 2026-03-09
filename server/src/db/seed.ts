@@ -54,6 +54,7 @@ const seedDatabase = async () => {
 
         const sortModule = await Module.create({
             islandId: sortIslandId,
+            slug: 'bubble-sort-basics',
             title: 'Bubble Sort Basics',
             description:
                 'Изучаем основы самого популярного алгоритма для новичков.',
