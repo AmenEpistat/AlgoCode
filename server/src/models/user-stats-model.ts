@@ -1,5 +1,13 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
+export interface Stats {
+    totalXP: number;
+    rank: number;
+    level: number;
+    currentStreak: number;
+    lastActivityDate: Date | null;
+}
+
 export interface IUserStats extends Document {
     userId: mongoose.Types.ObjectId;
     currentIslandId: mongoose.Types.ObjectId;
@@ -8,13 +16,7 @@ export interface IUserStats extends Document {
         achievementId: mongoose.Types.ObjectId;
         earnedAt: Date;
     }>;
-    stats: {
-        totalXP: number;
-        rank: number;
-        level: number;
-        currentStreak: number;
-        lastActivityDate: Date | null;
-    };
+    stats: Stats;
 }
 
 const ProgressSchema = new Schema({
