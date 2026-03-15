@@ -1,27 +1,71 @@
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+import passport from 'passport';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
+import './config/passport.js';
+import authRoutes from './routes/auth.js';
+import islandRoutes from './routes/island-routes';
+import moduleRoutes from './routes/module-routes';
+import taskRoutes from './routes/task-routes';
+import errorMiddleware from './middlewares/error-middleware';
 
 dotenv.config();
 
+const PORT = process.env.PORT || 3001;
+
 const app = express();
-app.use(cors());
+
+app.use(
+    cors({
+        origin: 'http://localhost:5173',
+        credentials: true,
+    }),
+);
+
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.json({ message: 'Привет изf Exprhhesrs!' });
-});
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET || 'secret',
+        resave: false,
+        saveUninitialized: false,
+        store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+        cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    }),
+);
 
+app.use(passport.initialize());
+app.use(passport.session());
 
-const PORT = 3001;
+app.use('/api/auth', authRoutes);
+app.use('/api/islands', islandRoutes);
+app.use('/api/modules', moduleRoutes);
+app.use('/api/tasks', taskRoutes);
+
+app.use(errorMiddleware);
+
 const start = async () => {
-    try {
-        app.listen(PORT, () => {
-            console.log('🚀 Сервер запущен на http://localhost:3000');
-        });
-    } catch (e) {
-        console.error(e);
+    const MAX_RETRIES = 5;
+    let currentRetry = 0;
+
+    while (currentRetry < MAX_RETRIES) {
+        try {
+            await mongoose.connect(process.env.MONGO_URI!);
+            console.log('✅ MongoDB connected successfully');
+            break;
+        } catch (err) {
+            currentRetry++;
+            console.log(
+                `❌ DB connection failed. Retry ${currentRetry}/${MAX_RETRIES}...`,
+            );
+            await new Promise((res) => setTimeout(res, 2000));
+        }
     }
+
+    app.listen(PORT, () => console.log('🚀 Server running on 3001'));
 };
 
 start();
