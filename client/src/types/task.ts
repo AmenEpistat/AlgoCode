@@ -5,7 +5,7 @@ import type { Quiz } from '@/types/quiz.ts';
 export interface Task extends Text {
     type: TaskType;
     progress: number;
-    rewardXP: number
+    rewardXP: number;
 }
 
 export type TaskType = 'theory' | 'code' | 'quiz';
