@@ -28,3 +28,6 @@ export const formatRelativeTime = (dateParam: string | Date): string => {
 
     return date.toLocaleDateString('ru-RU');
 };
+
+export const getISODate = (date: Date = new Date()) =>
+    date.toISOString().split('T')[0];
