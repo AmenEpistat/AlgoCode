@@ -8,12 +8,6 @@ export interface IUser extends Document {
 
     googleId: string;
     githubId: string;
-
-    stats: {
-        totalXP: number;
-        rank: number;
-        level: number;
-    };
 }
 
 const UserSchema = new mongoose.Schema(
@@ -25,12 +19,6 @@ const UserSchema = new mongoose.Schema(
 
         googleId: { type: String, unique: true, sparse: true },
         githubId: { type: String, unique: true, sparse: true },
-
-        stats: {
-            totalXP: { type: Number, default: 0 },
-            rank: { type: Number, default: 0 },
-            level: { type: Number, default: 1 },
-        },
     },
     { timestamps: true }
 );

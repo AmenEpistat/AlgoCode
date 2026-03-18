@@ -18,7 +18,7 @@ export const githubStrategy = new GitHubStrategy(
                     avatar: profile.photos?.[0].value,
                 });
             }
-            return done(null, user);
+            return done(null, user as any);
         } catch (err) {
             return done(err as Error);
         }

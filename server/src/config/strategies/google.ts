@@ -1,5 +1,6 @@
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { User } from '../../models/user-model';
+import { UserStats } from '../../models/user-stats-model';
 
 export const googleStrategy = new GoogleStrategy(
     {
@@ -17,8 +18,18 @@ export const googleStrategy = new GoogleStrategy(
                     email: profile.emails?.[0].value,
                     avatar: profile.photos?.[0].value,
                 });
+                await UserStats.create({
+                    userId: user._id,
+                    stats: {
+                        totalXP: 0,
+                        level: 1,
+                        currentStreak: 0,
+                        rank: 1,
+                        lastActivityDate: null,
+                    },
+                });
             }
-            return done(null, user);
+            return done(null, user as any);
         } catch (err) {
             return done(err as Error);
         }
