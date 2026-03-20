@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { ActivityLog } from '../models/activity-log-model';
 import { TaskProgress } from '../models/task-progress-model';
 import { Task } from '../models/task-model';
-import { UserStats } from '../models/user-stats-model';
+import { UserProgress } from '../models/user-stats-model';
 import ApiError from '../exceptions/api-error';
 import StreakService from './streak-service';
 import AchievementService from './achievement-service';
@@ -14,7 +14,7 @@ class ProgressService {
 
         let [task, userStats] = await Promise.all([
             Task.findById(taskId),
-            UserStats.findOne({ userId }),
+            UserProgress.findOne({ userId }),
         ]);
         if (!task) throw new ApiError(400, 'Задание не найдено');
         if (!userStats)
