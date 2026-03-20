@@ -1,5 +1,6 @@
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import { User } from '../../models/user-model';
+import { UserStats } from '../../models/user-stats-model';
 
 export const githubStrategy = new GitHubStrategy(
     {
@@ -16,6 +17,16 @@ export const githubStrategy = new GitHubStrategy(
                     displayName: profile.displayName || profile.username,
                     email: profile.emails?.[0].value,
                     avatar: profile.photos?.[0].value,
+                });
+                await UserStats.create({
+                    userId: user._id,
+                    stats: {
+                        totalXP: 0,
+                        level: 1,
+                        currentStreak: 0,
+                        rank: 1,
+                        lastActivityDate: null,
+                    },
                 });
             }
             return done(null, user as any);

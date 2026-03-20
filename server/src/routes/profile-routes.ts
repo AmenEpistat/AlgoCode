@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { ProfileController } from '../controllers/profile-controller';
+import ProfileController from '../controllers/profile-controller';
 
 const router = Router();
-const profileController = new ProfileController();
 
-router.get('/achievements', profileController.getAchievements);
+router.get('/achievements', ProfileController.getAchievements);
+router.get('/activity/calendar', ProfileController.getCalendarData);
+router.get('/activity/day', ProfileController.getDayEvents);
 
 export default router;
