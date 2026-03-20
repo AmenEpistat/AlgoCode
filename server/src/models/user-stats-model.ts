@@ -8,7 +8,7 @@ export interface Stats {
     lastActivityDate: Date | null;
 }
 
-export interface IUserStats extends Document {
+export interface IUserProgress extends Document {
     userId: mongoose.Types.ObjectId;
     currentIslandId: mongoose.Types.ObjectId;
     unlockedIslands: mongoose.Types.ObjectId[];
@@ -43,7 +43,7 @@ const ProgressSchema = new Schema({
     },
 });
 
-export const UserStats = mongoose.model<IUserStats>(
-    'UserStats',
+export const UserProgress = mongoose.model<IUserProgress>(
+    'UserProgress',
     ProgressSchema
 );

@@ -1,9 +1,9 @@
-import { IUserStats, UserStats } from '../models/user-stats-model';
+import { IUserProgress, UserProgress } from '../models/user-stats-model';
 import { Achievement, IAchievement } from '../models/achievement-model';
 import { TaskProgress } from '../models/task-progress-model';
 
 class AchievementService {
-    async getNewlyEarned(stats: IUserStats): Promise<IAchievement[]> {
+    async getNewlyEarned(stats: IUserProgress): Promise<IAchievement[]> {
         const alreadyEarnedIds = stats.achievements.map((a) =>
             a.achievementId.toString()
         );
@@ -41,7 +41,7 @@ class AchievementService {
 
     private checkCondition(
         ach: IAchievement,
-        stats: IUserStats,
+        stats: IUserProgress,
         taskCount: number
     ): boolean {
         const conditions: Record<string, boolean> = {
@@ -52,7 +52,7 @@ class AchievementService {
         return conditions[ach.requirementType] || false;
     }
 
-    private applyAchievements(stats: IUserStats, earned: IAchievement[]) {
+    private applyAchievements(stats: IUserProgress, earned: IAchievement[]) {
         earned.forEach((ach) => {
             stats.achievements.push({
                 achievementId: ach._id as any,
@@ -64,7 +64,7 @@ class AchievementService {
     async getAll(userId: string) {
         const [all, stats] = await Promise.all([
             Achievement.find().lean(),
-            UserStats.findOne({ userId }).select('achievements').lean(),
+            UserProgress.findOne({ userId }).select('achievements').lean(),
         ]);
 
         if (!stats)
