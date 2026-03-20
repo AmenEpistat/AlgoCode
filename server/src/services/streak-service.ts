@@ -1,6 +1,6 @@
 import { Stats } from '../models/user-stats-model';
 
-export class StreakService {
+class StreakService {
     calculate(stats: Stats, today: Date): number {
         if (!stats.lastActivityDate) return 1;
 
@@ -17,3 +17,5 @@ export class StreakService {
         return stats.currentStreak;
     }
 }
+
+export default new StreakService();

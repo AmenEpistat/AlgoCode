@@ -2,10 +2,10 @@ import { IUserStats, UserStats } from '../models/user-stats-model';
 import { Achievement, IAchievement } from '../models/achievement-model';
 import { TaskProgress } from '../models/task-progress-model';
 
-export class AchievementService {
+class AchievementService {
     async getNewlyEarned(stats: IUserStats): Promise<IAchievement[]> {
         const alreadyEarnedIds = stats.achievements.map((a) =>
-            a.achievementId.toString(),
+            a.achievementId.toString()
         );
 
         const candidates = await Achievement.find({
@@ -15,11 +15,11 @@ export class AchievementService {
 
         const completedTasksCount = await this.getTaskCountIfNeeded(
             candidates,
-            stats.userId,
+            stats.userId
         );
 
         const newlyEarned = candidates.filter((ach) =>
-            this.checkCondition(ach, stats, completedTasksCount),
+            this.checkCondition(ach, stats, completedTasksCount)
         );
 
         this.applyAchievements(stats, newlyEarned);
@@ -29,10 +29,10 @@ export class AchievementService {
 
     private async getTaskCountIfNeeded(
         candidates: IAchievement[],
-        userId: any,
+        userId: any
     ): Promise<number> {
         const hasTaskReq = candidates.some(
-            (a) => a.requirementType === 'total_tasks',
+            (a) => a.requirementType === 'total_tasks'
         );
         return hasTaskReq
             ? await TaskProgress.countDocuments({ userId, status: 'completed' })
@@ -42,7 +42,7 @@ export class AchievementService {
     private checkCondition(
         ach: IAchievement,
         stats: IUserStats,
-        taskCount: number,
+        taskCount: number
     ): boolean {
         const conditions: Record<string, boolean> = {
             total_xp: stats.stats.totalXP >= ach.condition,
@@ -78,7 +78,7 @@ export class AchievementService {
             stats.achievements.map((a: any) => [
                 a.achievementId.toString(),
                 a.earnedAt,
-            ]),
+            ])
         );
 
         return all.map((ach) => ({
@@ -88,3 +88,5 @@ export class AchievementService {
         }));
     }
 }
+
+export default new AchievementService();
