@@ -11,6 +11,8 @@ import islandRoutes from './routes/island-routes';
 import moduleRoutes from './routes/module-routes';
 import taskRoutes from './routes/task-routes';
 import errorMiddleware from './middlewares/error-middleware';
+import progressRoutes from './routes/progress-routes';
+import profileRoutes from './routes/profile-routes';
 
 dotenv.config();
 
@@ -22,7 +24,7 @@ app.use(
     cors({
         origin: 'http://localhost:5173',
         credentials: true,
-    }),
+    })
 );
 
 app.use(express.json());
@@ -34,7 +36,7 @@ app.use(
         saveUninitialized: false,
         store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
         cookie: { maxAge: 24 * 60 * 60 * 1000 },
-    }),
+    })
 );
 
 app.use(passport.initialize());
@@ -44,6 +46,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/islands', islandRoutes);
 app.use('/api/modules', moduleRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/progress', progressRoutes);
+app.use('/api/profile', profileRoutes);
 
 app.use(errorMiddleware);
 
@@ -59,7 +63,7 @@ const start = async () => {
         } catch (err) {
             currentRetry++;
             console.log(
-                `❌ DB connection failed. Retry ${currentRetry}/${MAX_RETRIES}...`,
+                `❌ DB connection failed. Retry ${currentRetry}/${MAX_RETRIES}...`
             );
             await new Promise((res) => setTimeout(res, 2000));
         }
